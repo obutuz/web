@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
 import store from './store';
-import history from './history';
+import { history } from './services';
 
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
