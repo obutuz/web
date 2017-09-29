@@ -16,9 +16,9 @@ function callApi(endpoint) {
       }
 
       const camelizedJson = camelizeKeys(json);
+      const returnObject = Object.assign({}, normalize(camelizedJson));
 
-      return Object.assign({},
-        normalize(camelizedJson));
+      return returnObject;
     })
     .then(
       response => ({ response }),

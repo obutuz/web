@@ -1,6 +1,7 @@
 import {
   FETCH_ACCOUNTS_REQUEST,
   FETCH_ACCOUNTS_SUCCESS,
+  FETCH_ACCOUNTS_FAILURE,
 } from '../actions/accounts';
 
 const initialState = {
@@ -8,10 +9,11 @@ const initialState = {
     accounts: [],
     isFetching: false,
     success: false,
+    message: null,
   },
 };
 
-const accounts = (state = initialState, { type, payload }) => {
+const accounts = (state = initialState, { type, ...payload }) => {
   switch (type) {
     case FETCH_ACCOUNTS_REQUEST:
       return {
@@ -20,6 +22,7 @@ const accounts = (state = initialState, { type, payload }) => {
           accounts: [],
           isFetching: true,
           success: false,
+          message: null,
         },
       };
     case FETCH_ACCOUNTS_SUCCESS:
@@ -29,6 +32,17 @@ const accounts = (state = initialState, { type, payload }) => {
           accounts: payload.accounts,
           isFetching: false,
           success: true,
+          message: null,
+        },
+      };
+    case FETCH_ACCOUNTS_FAILURE:
+      return {
+        ...state,
+        fetchAccounts: {
+          accounts: [],
+          isFetching: false,
+          success: false,
+          message: payload.message,
         },
       };
     default:
