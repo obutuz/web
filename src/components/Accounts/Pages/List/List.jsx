@@ -2,34 +2,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import withStyles from 'material-ui/styles/withStyles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 
 import styles from './styles';
 
-const data = [
-  {
-    id: 1,
-    name: 'Petty Cash',
-    description: 'This is an account',
-    category: 'Cash',
-  },
-  {
-    id: 2,
-    name: 'BDO Savings',
-    description: 'This is an account',
-    category: 'Savings',
-  },
-  {
-    id: 3,
-    name: 'BPI Checking',
-    description: 'This is an account',
-    category: 'Checking',
-  },
-];
-
-const List = ({ classes }) => (
+const List = ({ classes, accounts }) => (
   <Paper className={classes.paper}>
     <Table>
       <TableHead>
@@ -41,13 +21,13 @@ const List = ({ classes }) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {data.map((n) => {
+        {accounts.map((account) => {
           return (
-            <TableRow key={n.id}>
-              <TableCell>{n.id}</TableCell>
-              <TableCell>{n.name}</TableCell>
-              <TableCell>{n.description}</TableCell>
-              <TableCell>{n.category}</TableCell>
+            <TableRow key={account.id}>
+              <TableCell>{account.id}</TableCell>
+              <TableCell>{account.name}</TableCell>
+              <TableCell>{account.description}</TableCell>
+              <TableCell>{account.category}</TableCell>
             </TableRow>
           );
         })}
@@ -58,6 +38,22 @@ const List = ({ classes }) => (
 
 List.propTypes = {
   classes: PropTypes.shape.isRequired,
+  accounts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      category: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
-export default withStyles(styles)(List);
+const mapStateToProps = (state) => {
+  return {
+    accounts: state.accounts.fetchAccounts.accounts,
+  };
+};
+
+const ListWithMap = connect(mapStateToProps, null)(List);
+
+export default withStyles(styles)(ListWithMap);
