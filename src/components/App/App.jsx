@@ -1,25 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'material-ui/styles/withStyles';
-import Typography from 'material-ui/Typography';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
 
 import styles from './styles';
 import withApp from '../withApp';
 
 import Header from '../Header';
+import Home from '../Home';
 
 const App = ({ classes }) => (
-  <div>
-    <Header />
+  <Router>
     <div className={classes.root}>
-      <Typography type="display1" gutterBottom>
-        Open Budget
-      </Typography>
-      <Typography type="subheading" gutterBottom>
-        An open source budgeting app
-      </Typography>
+      <Header />
+      <Route exact path="/" component={Home} />
     </div>
-  </div>
+  </Router>
 );
 
 App.propTypes = {

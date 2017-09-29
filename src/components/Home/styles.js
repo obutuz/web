@@ -1,5 +1,7 @@
 const styles = {
   root: {
+    textAlign: 'center',
+    paddingTop: 200,
   },
 };
 
