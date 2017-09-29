@@ -6,14 +6,19 @@ import Typography from 'material-ui/Typography';
 import styles from './styles';
 import withApp from '../withApp';
 
+import Header from '../Header';
+
 const App = ({ classes }) => (
-  <div className={classes.root}>
-    <Typography type="display1" gutterBottom>
-      Open Budget
-    </Typography>
-    <Typography type="subheading" gutterBottom>
-      An open source budgeting app
-    </Typography>
+  <div>
+    <Header />
+    <div className={classes.root}>
+      <Typography type="display1" gutterBottom>
+        Open Budget
+      </Typography>
+      <Typography type="subheading" gutterBottom>
+        An open source budgeting app
+      </Typography>
+    </div>
   </div>
 );
 
