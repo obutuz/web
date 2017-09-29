@@ -11,12 +11,14 @@ import withApp from '../withApp';
 
 import Header from '../Header';
 import Home from '../Home';
+import AccountsList from '../Accounts/Pages/List';
 
 const App = ({ classes }) => (
   <Router>
     <div className={classes.root}>
       <Header />
       <Route exact path="/" component={Home} />
+      <Route path="/accounts" component={AccountsList} />
     </div>
   </Router>
 );
