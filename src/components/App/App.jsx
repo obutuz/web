@@ -24,7 +24,7 @@ const App = ({ classes }) => (
 );
 
 App.propTypes = {
-  classes: PropTypes.shape.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withApp(withStyles(styles)(App));

@@ -38,10 +38,10 @@ const List = ({ classes, accounts }) => (
 );
 
 List.propTypes = {
-  classes: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
   accounts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
       category: PropTypes.string.isRequired,
@@ -65,10 +65,10 @@ class AccountsList extends React.Component {
 }
 
 AccountsList.propTypes = {
-  classes: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
   accounts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string,
       category: PropTypes.string.isRequired,
@@ -83,6 +83,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ListWithMap = connect(mapStateToProps, null)(AccountsList);
+const ListWithStyle = withStyles(styles)(AccountsList);
 
-export default withStyles(styles)(ListWithMap);
+export default connect(mapStateToProps, null)(ListWithStyle);

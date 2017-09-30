@@ -27,7 +27,7 @@ const Header = ({ classes }) => (
 );
 
 Header.propTypes = {
-  classes: PropTypes.shape.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Header);
