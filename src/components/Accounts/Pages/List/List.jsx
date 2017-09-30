@@ -22,13 +22,13 @@ const List = ({ classes, accounts }) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {Object.entries(accounts).map((account) => {
+        {accounts.map((account) => {
           return (
-            <TableRow key={account[1].id}>
-              <TableCell>{account[1].id}</TableCell>
-              <TableCell>{account[1].attributes.name}</TableCell>
-              <TableCell>{account[1].attributes.description}</TableCell>
-              <TableCell>{account[1].attributes.category}</TableCell>
+            <TableRow key={account.id}>
+              <TableCell>{account.id}</TableCell>
+              <TableCell>{account.name}</TableCell>
+              <TableCell>{account.description}</TableCell>
+              <TableCell>{account.category}</TableCell>
             </TableRow>
           );
         })}
