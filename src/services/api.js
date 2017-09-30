@@ -2,7 +2,7 @@ import normalize from 'json-api-normalizer';
 import { camelizeKeys } from 'humps';
 import 'isomorphic-fetch';
 
-const API_HOST = (process.env.NODE_ENV === 'development') ? 'http://localhost:4000/api/' : 'http://api.openbudget.xyz/api';
+const API_HOST = (process.env.NODE_ENV === 'development') ? 'http://localhost:4000/api/' : 'https://api.openbudget.xyz/api/';
 
 function callApi(endpoint) {
   const fullUrl = (endpoint.indexOf(API_HOST) === -1) ? API_HOST + endpoint : endpoint;
