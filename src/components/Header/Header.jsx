@@ -10,9 +10,9 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
 import styles from './styles';
-import { toggleMenuBar } from '../../actions/navigation';
+import { toggleSideBar } from '../../actions/navigation';
 
-const Header = ({ classes, onMenuBarClick }) => (
+const Header = ({ classes, onSideBarClick }) => (
   <div>
     <AppBar className={classes.appBar}>
       <Toolbar>
@@ -20,7 +20,7 @@ const Header = ({ classes, onMenuBarClick }) => (
           color="contrast"
           aria-label="open drawer"
           className={classes.navIconHide}
-          onClick={onMenuBarClick}
+          onClick={onSideBarClick}
         >
           <MenuIcon />
         </IconButton>
@@ -35,12 +35,12 @@ const Header = ({ classes, onMenuBarClick }) => (
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  onMenuBarClick: PropTypes.func.isRequired,
+  onSideBarClick: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
-  onMenuBarClick: () => {
-    dispatch(toggleMenuBar());
+  onSideBarClick: () => {
+    dispatch(toggleSideBar());
   },
 });
 

@@ -11,7 +11,7 @@ import HomeIcon from 'material-ui-icons/Home';
 import AccountBalanceIcon from 'material-ui-icons/AccountBalance';
 
 import styles from './styles';
-import { toggleMenuBar, closeMenuBar } from '../../actions/navigation';
+import { toggleSideBar, closeSideBar } from '../../actions/navigation';
 
 const SideBarItems = ({ classes, onSideBarItemClick }) => (
   <div>
@@ -50,12 +50,12 @@ SideBarItems.propTypes = {
   onSideBarItemClick: PropTypes.func.isRequired,
 };
 
-const SideBar = ({ classes, menuBarOpen, onRequestClose, onSideBarItemClick }) => (
+const SideBar = ({ classes, sideBarOpen, onRequestClose, onSideBarItemClick }) => (
   <div>
     <Hidden mdUp>
       <Drawer
         type="temporary"
-        open={menuBarOpen}
+        open={sideBarOpen}
         classes={{
           paper: classes.drawerPaper,
         }}
@@ -89,21 +89,21 @@ const SideBar = ({ classes, menuBarOpen, onRequestClose, onSideBarItemClick }) =
 
 SideBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  menuBarOpen: PropTypes.bool.isRequired,
+  sideBarOpen: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   onSideBarItemClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  menuBarOpen: state.navigation.menuBar.open,
+  sideBarOpen: state.navigation.sideBar.open,
 });
 
 const mapDispatchToProps = dispatch => ({
   onRequestClose: () => {
-    dispatch(toggleMenuBar());
+    dispatch(toggleSideBar());
   },
   onSideBarItemClick: () => {
-    dispatch(closeMenuBar());
+    dispatch(closeSideBar());
   },
 });
 

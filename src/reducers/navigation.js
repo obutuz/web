@@ -1,27 +1,27 @@
 import {
-  MENU_BAR_TOGGLE,
-  MENU_BAR_CLOSE,
+  SIDE_BAR_TOGGLE,
+  SIDE_BAR_CLOSE,
 } from '../actions/navigation';
 
 const initialState = {
-  menuBar: {
+  sideBar: {
     open: false,
   },
 };
 
 const navigation = (state = initialState, { type }) => {
   switch (type) {
-    case MENU_BAR_TOGGLE:
+    case SIDE_BAR_TOGGLE:
       return {
         ...state,
-        menuBar: {
-          open: !state.menuBar.open,
+        sideBar: {
+          open: !state.sideBar.open,
         },
       };
-    case MENU_BAR_CLOSE:
+    case SIDE_BAR_CLOSE:
       return {
         ...state,
-        menuBar: {
+        sideBar: {
           open: false,
         },
       };
