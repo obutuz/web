@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -9,15 +10,21 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
 import styles from './styles';
+import { toggleMenuBar } from '../../actions/navigation';
 
-const Header = ({ classes }) => (
-  <div className={classes.root}>
-    <AppBar position="static">
+const Header = ({ classes, onMenuBarClick }) => (
+  <div>
+    <AppBar className={classes.appBar}>
       <Toolbar>
-        <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
+        <IconButton
+          color="contrast"
+          aria-label="open drawer"
+          className={classes.navIconHide}
+          onClick={onMenuBarClick}
+        >
           <MenuIcon />
         </IconButton>
-        <Typography type="title" color="inherit" className={classes.flex}>
+        <Typography type="title" color="inherit" className={classes.flex} noWrap>
           Open Budget
         </Typography>
         <Button color="contrast">Login</Button>
@@ -28,6 +35,15 @@ const Header = ({ classes }) => (
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
+  onMenuBarClick: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(Header);
+const mapDispatchToProps = dispatch => ({
+  onMenuBarClick: () => {
+    dispatch(toggleMenuBar());
+  },
+});
+
+const HeaderWithStyle = withStyles(styles)(Header);
+
+export default connect(null, mapDispatchToProps)(HeaderWithStyle);
