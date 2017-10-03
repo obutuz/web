@@ -5,3 +5,7 @@ export const MENU_BAR_TOGGLE = 'MENU_BAR_TOGGLE';
 export const toggleMenuBar = () => ({
   type: MENU_BAR_TOGGLE,
 });
+
+export const closeMenuBar = () => ({
+  type: MENU_BAR_CLOSE,
+});

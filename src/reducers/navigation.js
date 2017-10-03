@@ -1,4 +1,7 @@
-import { MENU_BAR_TOGGLE } from '../actions/navigation';
+import {
+  MENU_BAR_TOGGLE,
+  MENU_BAR_CLOSE,
+} from '../actions/navigation';
 
 const initialState = {
   menuBar: {
@@ -13,6 +16,13 @@ const navigation = (state = initialState, { type }) => {
         ...state,
         menuBar: {
           open: !state.menuBar.open,
+        },
+      };
+    case MENU_BAR_CLOSE:
+      return {
+        ...state,
+        menuBar: {
+          open: false,
         },
       };
     default:

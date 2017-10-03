@@ -11,9 +11,9 @@ import HomeIcon from 'material-ui-icons/Home';
 import AccountBalanceIcon from 'material-ui-icons/AccountBalance';
 
 import styles from './styles';
-import { toggleMenuBar } from '../../actions/navigation';
+import { toggleMenuBar, closeMenuBar } from '../../actions/navigation';
 
-const SideBarItems = ({ classes }) => (
+const SideBarItems = ({ classes, onSideBarItemClick }) => (
   <div>
     <div className={classes.drawerHeader} />
     <Divider />
@@ -22,6 +22,7 @@ const SideBarItems = ({ classes }) => (
         button
         component={Link}
         to="/"
+        onClick={onSideBarItemClick}
       >
         <ListItemIcon>
           <HomeIcon />
@@ -32,6 +33,7 @@ const SideBarItems = ({ classes }) => (
         button
         component={Link}
         to="/accounts"
+        onClick={onSideBarItemClick}
       >
         <ListItemIcon>
           <AccountBalanceIcon />
@@ -45,9 +47,10 @@ const SideBarItems = ({ classes }) => (
 
 SideBarItems.propTypes = {
   classes: PropTypes.object.isRequired,
+  onSideBarItemClick: PropTypes.func.isRequired,
 };
 
-const SideBar = ({ classes, menuBarOpen, onRequestClose }) => (
+const SideBar = ({ classes, menuBarOpen, onRequestClose, onSideBarItemClick }) => (
   <div>
     <Hidden mdUp>
       <Drawer
@@ -61,7 +64,10 @@ const SideBar = ({ classes, menuBarOpen, onRequestClose }) => (
           keepMounted: true,
         }}
       >
-        <SideBarItems classes={classes} />
+        <SideBarItems
+          classes={classes}
+          onSideBarItemClick={onSideBarItemClick}
+        />
       </Drawer>
     </Hidden>
     <Hidden mdDown implementation="css">
@@ -72,7 +78,10 @@ const SideBar = ({ classes, menuBarOpen, onRequestClose }) => (
           paper: classes.drawerPaper,
         }}
       >
-        <SideBarItems classes={classes} />
+        <SideBarItems
+          classes={classes}
+          onSideBarItemClick={onSideBarItemClick}
+        />
       </Drawer>
     </Hidden>
   </div>
@@ -82,6 +91,7 @@ SideBar.propTypes = {
   classes: PropTypes.object.isRequired,
   menuBarOpen: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
+  onSideBarItemClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -91,6 +101,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onRequestClose: () => {
     dispatch(toggleMenuBar());
+  },
+  onSideBarItemClick: () => {
+    dispatch(closeMenuBar());
   },
 });
 
