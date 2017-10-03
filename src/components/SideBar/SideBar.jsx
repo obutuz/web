@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
+import { Link } from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import InboxIcon from 'material-ui-icons/Inbox';
+import HomeIcon from 'material-ui-icons/Home';
+import AccountBalanceIcon from 'material-ui-icons/AccountBalance';
 
 import styles from './styles';
 import { toggleMenuBar } from '../../actions/navigation';
@@ -16,9 +18,23 @@ const SideBarItems = ({ classes }) => (
     <div className={classes.drawerHeader} />
     <Divider />
     <List>
-      <ListItem button>
+      <ListItem
+        button
+        component={Link}
+        to="/"
+      >
         <ListItemIcon>
-          <InboxIcon />
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText primary="Home" />
+      </ListItem>
+      <ListItem
+        button
+        component={Link}
+        to="/accounts"
+      >
+        <ListItemIcon>
+          <AccountBalanceIcon />
         </ListItemIcon>
         <ListItemText primary="Accounts" />
       </ListItem>
