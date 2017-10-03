@@ -5,7 +5,6 @@ import { withStyles } from 'material-ui/styles';
 import { Link } from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
 import Hidden from 'material-ui/Hidden';
-import Divider from 'material-ui/Divider';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import HomeIcon from 'material-ui-icons/Home';
 import AccountBalanceIcon from 'material-ui-icons/AccountBalance';
@@ -16,7 +15,6 @@ import { toggleSideBar, closeSideBar } from '../../actions/navigation';
 const SideBarItems = ({ classes, onSideBarItemClick }) => (
   <div>
     <div className={classes.drawerHeader} />
-    <Divider />
     <List>
       <ListItem
         button
@@ -41,7 +39,6 @@ const SideBarItems = ({ classes, onSideBarItemClick }) => (
         <ListItemText primary="Accounts" />
       </ListItem>
     </List>
-    <Divider />
   </div>
 );
 
@@ -51,39 +48,41 @@ SideBarItems.propTypes = {
 };
 
 const SideBar = ({ classes, sideBarOpen, onRequestClose, onSideBarItemClick }) => (
-  <div>
-    <Hidden mdUp>
-      <Drawer
-        type="temporary"
-        open={sideBarOpen}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        onRequestClose={onRequestClose}
-        ModalProps={{
-          keepMounted: true,
-        }}
-      >
-        <SideBarItems
-          classes={classes}
-          onSideBarItemClick={onSideBarItemClick}
-        />
-      </Drawer>
-    </Hidden>
-    <Hidden mdDown implementation="css">
-      <Drawer
-        type="permanent"
-        open
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <SideBarItems
-          classes={classes}
-          onSideBarItemClick={onSideBarItemClick}
-        />
-      </Drawer>
-    </Hidden>
+  <div className={classes.root}>
+    <div className={classes.wrapper}>
+      <Hidden mdUp>
+        <Drawer
+          type="temporary"
+          open={sideBarOpen}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          onRequestClose={onRequestClose}
+          ModalProps={{
+            keepMounted: true,
+          }}
+        >
+          <SideBarItems
+            classes={classes}
+            onSideBarItemClick={onSideBarItemClick}
+          />
+        </Drawer>
+      </Hidden>
+      <Hidden mdDown implementation="css">
+        <Drawer
+          type="permanent"
+          open
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          <SideBarItems
+            classes={classes}
+            onSideBarItemClick={onSideBarItemClick}
+          />
+        </Drawer>
+      </Hidden>
+    </div>
   </div>
 );
 
