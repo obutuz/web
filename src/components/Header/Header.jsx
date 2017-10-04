@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
@@ -28,7 +29,13 @@ export const Header = ({ classes, sideBarOpen, onSideBarClick }) => (
         <Typography type="title" color="inherit" className={classes.flex} noWrap>
           Open Budget
         </Typography>
-        <Button color="contrast">Login</Button>
+        <Button
+          color="contrast"
+          component={Link}
+          to="/sign_in"
+        >
+          Sign In
+        </Button>
       </Toolbar>
     </AppBar>
   </div>
