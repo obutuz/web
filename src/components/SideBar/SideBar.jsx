@@ -14,38 +14,34 @@ import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
 import styles from './styles';
 import { closeSideBar } from '../../actions/navigation';
 
-const SideBarItems = ({ classes, onSideBarItemClick }) => (
-  <div>
-    <div className={classes.drawerHeader} />
-    <List>
-      <ListItem
-        button
-        component={Link}
-        to="/"
-        onClick={onSideBarItemClick}
-      >
-        <ListItemIcon>
-          <HomeIcon />
-        </ListItemIcon>
-        <ListItemText primary="Home" />
-      </ListItem>
-      <ListItem
-        button
-        component={Link}
-        to="/accounts"
-        onClick={onSideBarItemClick}
-      >
-        <ListItemIcon>
-          <AccountBalanceIcon />
-        </ListItemIcon>
-        <ListItemText primary="Accounts" />
-      </ListItem>
-    </List>
-  </div>
+const SideBarItems = ({ onSideBarItemClick }) => (
+  <List>
+    <ListItem
+      button
+      component={Link}
+      to="/"
+      onClick={onSideBarItemClick}
+    >
+      <ListItemIcon>
+        <HomeIcon />
+      </ListItemIcon>
+      <ListItemText primary="Home" />
+    </ListItem>
+    <ListItem
+      button
+      component={Link}
+      to="/accounts"
+      onClick={onSideBarItemClick}
+    >
+      <ListItemIcon>
+        <AccountBalanceIcon />
+      </ListItemIcon>
+      <ListItemText primary="Accounts" />
+    </ListItem>
+  </List>
 );
 
 SideBarItems.propTypes = {
-  classes: PropTypes.object.isRequired,
   onSideBarItemClick: PropTypes.func.isRequired,
 };
 
@@ -69,7 +65,6 @@ const SideBar = ({
       </div>
       <Divider />
       <SideBarItems
-        classes={classes}
         onSideBarItemClick={onSideBarItemClick}
       />
     </div>

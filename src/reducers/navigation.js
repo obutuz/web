@@ -1,6 +1,7 @@
 import {
   SIDE_BAR_TOGGLE,
   SIDE_BAR_CLOSE,
+  SIDE_BAR_OPEN,
 } from '../actions/navigation';
 
 const initialState = {
@@ -23,6 +24,13 @@ const navigation = (state = initialState, { type }) => {
         ...state,
         sideBar: {
           open: false,
+        },
+      };
+    case SIDE_BAR_OPEN:
+      return {
+        ...state,
+        sideBar: {
+          open: true,
         },
       };
     default:
