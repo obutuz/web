@@ -12,7 +12,7 @@ import MenuIcon from 'material-ui-icons/Menu';
 import styles from './styles';
 import { toggleSideBar } from '../../actions/navigation';
 
-const Header = ({ classes, onSideBarClick }) => (
+export const Header = ({ classes, onSideBarClick }) => (
   <div>
     <AppBar className={classes.appBar}>
       <Toolbar>
