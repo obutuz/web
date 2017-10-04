@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
+import classNames from 'classnames';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
@@ -10,16 +11,16 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
 import styles from './styles';
-import { toggleSideBar } from '../../actions/navigation';
+import { openSideBar } from '../../actions/navigation';
 
-export const Header = ({ classes, onSideBarClick }) => (
+export const Header = ({ classes, sideBarOpen, onSideBarClick }) => (
   <div>
-    <AppBar className={classes.appBar}>
-      <Toolbar>
+    <AppBar className={classNames(classes.appBar, sideBarOpen && classes.appBarShift)}>
+      <Toolbar disableGutters={!sideBarOpen}>
         <IconButton
           color="contrast"
           aria-label="open drawer"
-          className={classes.navIconHide}
+          className={classNames(classes.menuButton, sideBarOpen && classes.hide)}
           onClick={onSideBarClick}
         >
           <MenuIcon />
@@ -35,15 +36,20 @@ export const Header = ({ classes, onSideBarClick }) => (
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
+  sideBarOpen: PropTypes.bool.isRequired,
   onSideBarClick: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = state => ({
+  sideBarOpen: state.navigation.sideBar.open,
+});
+
 const mapDispatchToProps = dispatch => ({
   onSideBarClick: () => {
-    dispatch(toggleSideBar());
+    dispatch(openSideBar());
   },
 });
 
 const HeaderWithStyle = withStyles(styles)(Header);
 
-export default connect(null, mapDispatchToProps)(HeaderWithStyle);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderWithStyle);

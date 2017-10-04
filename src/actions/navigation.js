@@ -9,3 +9,7 @@ export const toggleSideBar = () => ({
 export const closeSideBar = () => ({
   type: SIDE_BAR_CLOSE,
 });
+
+export const openSideBar = () => ({
+  type: SIDE_BAR_OPEN,
+});

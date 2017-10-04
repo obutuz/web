@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import { Link } from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
-import Hidden from 'material-ui/Hidden';
+import Divider from 'material-ui/Divider';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import IconButton from 'material-ui/IconButton';
 import HomeIcon from 'material-ui-icons/Home';
 import AccountBalanceIcon from 'material-ui-icons/AccountBalance';
+import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
 
 import styles from './styles';
-import { toggleSideBar, closeSideBar } from '../../actions/navigation';
+import { closeSideBar } from '../../actions/navigation';
 
 const SideBarItems = ({ classes, onSideBarItemClick }) => (
   <div>
@@ -47,49 +49,36 @@ SideBarItems.propTypes = {
   onSideBarItemClick: PropTypes.func.isRequired,
 };
 
-const SideBar = ({ classes, sideBarOpen, onRequestClose, onSideBarItemClick }) => (
-  <div className={classes.root}>
-    <div className={classes.wrapper}>
-      <Hidden mdUp>
-        <Drawer
-          type="temporary"
-          open={sideBarOpen}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-          onRequestClose={onRequestClose}
-          ModalProps={{
-            keepMounted: true,
-          }}
-        >
-          <SideBarItems
-            classes={classes}
-            onSideBarItemClick={onSideBarItemClick}
-          />
-        </Drawer>
-      </Hidden>
-      <Hidden mdDown implementation="css">
-        <Drawer
-          type="permanent"
-          open
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <SideBarItems
-            classes={classes}
-            onSideBarItemClick={onSideBarItemClick}
-          />
-        </Drawer>
-      </Hidden>
+const SideBar = ({
+  classes,
+  sideBarOpen,
+  onSideBarItemClick,
+}) => (
+  <Drawer
+    type="persistent"
+    classes={{
+      paper: classes.drawerPaper,
+    }}
+    open={sideBarOpen}
+  >
+    <div className={classes.drawerInner}>
+      <div className={classes.drawerHeader}>
+        <IconButton onClick={onSideBarItemClick}>
+          <ChevronLeftIcon />
+        </IconButton>
+      </div>
+      <Divider />
+      <SideBarItems
+        classes={classes}
+        onSideBarItemClick={onSideBarItemClick}
+      />
     </div>
-  </div>
+  </Drawer>
 );
 
 SideBar.propTypes = {
   classes: PropTypes.object.isRequired,
   sideBarOpen: PropTypes.bool.isRequired,
-  onRequestClose: PropTypes.func.isRequired,
   onSideBarItemClick: PropTypes.func.isRequired,
 };
 
@@ -98,9 +87,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onRequestClose: () => {
-    dispatch(toggleSideBar());
-  },
   onSideBarItemClick: () => {
     dispatch(closeSideBar());
   },
