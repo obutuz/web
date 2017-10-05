@@ -22,6 +22,7 @@
     "react-scripts": "1.0.14",
     "recompose": "^0.25.1",
     "redux": "^3.7.2",
+    "redux-form": "^7.0.4",
     "redux-saga": "^0.15.6",
     "theming": "https://github.com/iamstarkov/theming.git#greenkeeper/react-16.0.0"
   },
