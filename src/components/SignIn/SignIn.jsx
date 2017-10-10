@@ -8,6 +8,7 @@ import { reduxForm, Field } from 'redux-form';
 import Button from 'material-ui/Button';
 
 import styles from './styles';
+import { signInRequest } from '../../actions/authentication';
 
 import TextField from '../Form/TextField';
 
@@ -56,6 +57,7 @@ SignIn.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (values) => {
+    dispatch(signInRequest(values));
   },
 });
 
