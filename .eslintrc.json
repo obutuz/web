@@ -11,6 +11,7 @@
             {
                 "devDependencies": true
             }
-        ]
+        ],
+        "import/no-named-as-default": "off"
     }
 }

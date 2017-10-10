@@ -15,6 +15,7 @@ import Header from '../Header';
 import SideBar from '../SideBar';
 import Home from '../Home';
 import AccountsList from '../Accounts/Pages/List';
+import SignIn from '../SignIn';
 
 const App = ({ classes, sideBarOpen }) => (
   <Router>
@@ -25,6 +26,7 @@ const App = ({ classes, sideBarOpen }) => (
         <main className={classNames(classes.content, sideBarOpen && classes.contentShift)}>
           <Route exact path="/" component={Home} />
           <Route path="/accounts" component={AccountsList} />
+          <Route path="/sign_in" component={SignIn} />
         </main>
       </div>
     </div>
