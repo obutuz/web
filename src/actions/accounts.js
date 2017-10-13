@@ -2,8 +2,10 @@ export const FETCH_ACCOUNTS_REQUEST = 'FETCH_ACCOUNTS_REQUEST';
 export const FETCH_ACCOUNTS_SUCCESS = 'FETCH_ACCOUNTS_SUCCESS';
 export const FETCH_ACCOUNTS_FAILURE = 'FETCH_ACCOUNTS_FAILURE';
 
-export const fetchAccountsRequest = () => ({
+export const fetchAccountsRequest = (resolve, reject) => ({
   type: FETCH_ACCOUNTS_REQUEST,
+  resolve,
+  reject,
 });
 
 export const fetchAccountsSuccess = accounts => ({
@@ -11,7 +13,7 @@ export const fetchAccountsSuccess = accounts => ({
   accounts,
 });
 
-export const fetchAccountsFailure = message => ({
+export const fetchAccountsFailure = error => ({
   type: FETCH_ACCOUNTS_FAILURE,
-  message,
+  message: error.message,
 });

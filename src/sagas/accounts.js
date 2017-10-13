@@ -1,17 +1,20 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, take } from 'redux-saga/effects';
 
 import { api } from '../services';
 
 import {
   FETCH_ACCOUNTS_REQUEST,
-  FETCH_ACCOUNTS_SUCCESS,
-  FETCH_ACCOUNTS_FAILURE,
+  fetchAccountsSuccess,
+  fetchAccountsFailure,
 } from '../actions/accounts';
 
 function* fetchAccounts() {
-  try {
-    const apiCall = yield call(api.fetchAccounts);
-    const normalizedAccounts = Object.entries(apiCall.response.account).map((account) => {
+  const { resolve, reject } = yield take(FETCH_ACCOUNTS_REQUEST);
+  const { response, error } = yield call(api.fetchAccounts);
+
+  if (response && !error) {
+    resolve();
+    const normalizedAccounts = Object.entries(response.account).map((account) => {
       return {
         id: account[1].id,
         name: account[1].attributes.name,
@@ -19,15 +22,11 @@ function* fetchAccounts() {
         category: account[1].attributes.category,
       };
     });
-
-    yield put({ type: FETCH_ACCOUNTS_SUCCESS, accounts: normalizedAccounts });
-  } catch (e) {
-    yield put({ type: FETCH_ACCOUNTS_FAILURE, message: e.message });
+    yield put(fetchAccountsSuccess(normalizedAccounts));
+  } else {
+    reject();
+    yield put(fetchAccountsFailure(error));
   }
 }
 
-function* watchFetchAccounts() {
-  yield takeEvery(FETCH_ACCOUNTS_REQUEST, fetchAccounts);
-}
-
-export default watchFetchAccounts;
+export default fetchAccounts;
