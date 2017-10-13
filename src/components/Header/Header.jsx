@@ -13,6 +13,7 @@ import MenuIcon from 'material-ui-icons/Menu';
 
 import styles from './styles';
 import { openSideBar } from '../../actions/navigation';
+import { signOutRequest } from '../../actions/authentication';
 
 const SignInButton = () => (
   <Button
@@ -24,17 +25,28 @@ const SignInButton = () => (
   </Button>
 );
 
-const SignOutButton = () => (
+const SignOutButton = ({ onSignOutClick }) => (
   <Button
     color="contrast"
     component={Link}
     to="/"
+    onClick={onSignOutClick}
   >
     Sign Out
   </Button>
 );
 
-export const Header = ({ classes, sideBarOpen, onSideBarClick, isAuthenticated }) => (
+SignOutButton.propTypes = {
+  onSignOutClick: PropTypes.func.isRequired,
+};
+
+export const Header = ({
+  classes,
+  sideBarOpen,
+  onSideBarClick,
+  isAuthenticated,
+  onSignOutClick,
+}) => (
   <div>
     <AppBar className={classNames(classes.appBar, sideBarOpen && classes.appBarShift)}>
       <Toolbar disableGutters={!sideBarOpen}>
@@ -50,7 +62,7 @@ export const Header = ({ classes, sideBarOpen, onSideBarClick, isAuthenticated }
           Open Budget
         </Typography>
         {isAuthenticated ?
-          <SignOutButton />
+          <SignOutButton onSignOutClick={onSignOutClick} />
           :
           <SignInButton />
         }
@@ -64,6 +76,7 @@ Header.propTypes = {
   sideBarOpen: PropTypes.bool.isRequired,
   onSideBarClick: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  onSignOutClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -74,6 +87,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onSideBarClick: () => {
     dispatch(openSideBar());
+  },
+  onSignOutClick: () => {
+    return new Promise((resolve) => {
+      dispatch(signOutRequest(resolve));
+    });
   },
 });
 
