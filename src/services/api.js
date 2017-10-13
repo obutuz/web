@@ -4,7 +4,7 @@ import 'isomorphic-fetch';
 
 const API_HOST = (process.env.NODE_ENV === 'development') ? 'http://localhost:4000/api/' : 'https://api.openbudget.xyz/api/';
 
-function callApi(endpoint, method = 'get', body = {}) {
+function callApi(endpoint, method = 'get', headers = {}, body = {}) {
   const fullUrl = (endpoint.indexOf(API_HOST) === -1) ? API_HOST + endpoint : endpoint;
   let options = {
     method,
@@ -13,6 +13,11 @@ function callApi(endpoint, method = 'get', body = {}) {
       'Content-Type': 'application/vnd.api+json',
     },
   };
+
+  if (Object.keys(headers).length > 0) {
+    const modifiedHeaders = Object.assign(options.headers, headers);
+    options = Object.assign(options, { headers: modifiedHeaders });
+  }
 
   if (Object.keys(body).length > 0) {
     const normalizedBody = {
@@ -53,4 +58,4 @@ function callApi(endpoint, method = 'get', body = {}) {
 export const fetchAccounts = () => callApi('accounts');
 export const fetchAccount = id => callApi(`accounts/${id}`);
 
-export const signInUser = (email, password) => callApi('auth/token', 'post', { email, password });
+export const signInUser = (email, password) => callApi('auth/token', 'post', {}, { email, password });
