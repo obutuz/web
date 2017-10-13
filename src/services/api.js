@@ -6,7 +6,7 @@ const API_HOST = (process.env.NODE_ENV === 'development') ? 'http://localhost:40
 
 function callApi(endpoint, method = 'get', body = {}) {
   const fullUrl = (endpoint.indexOf(API_HOST) === -1) ? API_HOST + endpoint : endpoint;
-  const options = {
+  let options = {
     method,
     headers: {
       Accept: 'application/vnd.api+json',
@@ -21,7 +21,7 @@ function callApi(endpoint, method = 'get', body = {}) {
       },
     };
 
-    options[body] = JSON.stringify(normalizedBody);
+    options = Object.assign(options, { body: JSON.stringify(normalizedBody) });
   }
 
   return fetch(fullUrl, options)
@@ -52,3 +52,5 @@ function callApi(endpoint, method = 'get', body = {}) {
 
 export const fetchAccounts = () => callApi('accounts');
 export const fetchAccount = id => callApi(`accounts/${id}`);
+
+export const signInUser = (email, password) => callApi('auth/token', 'post', { email, password });

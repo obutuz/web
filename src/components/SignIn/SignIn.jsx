@@ -1,3 +1,4 @@
+/* eslint arrow-body-style: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'material-ui/styles/withStyles';
@@ -57,7 +58,9 @@ SignIn.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (values) => {
-    dispatch(signInRequest(values));
+    return new Promise((resolve, reject) => {
+      dispatch(signInRequest(values, resolve, reject));
+    });
   },
 });
 

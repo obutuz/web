@@ -14,7 +14,27 @@ import MenuIcon from 'material-ui-icons/Menu';
 import styles from './styles';
 import { openSideBar } from '../../actions/navigation';
 
-export const Header = ({ classes, sideBarOpen, onSideBarClick }) => (
+const SignInButton = () => (
+  <Button
+    color="contrast"
+    component={Link}
+    to="/sign_in"
+  >
+    Sign In
+  </Button>
+);
+
+const SignOutButton = () => (
+  <Button
+    color="contrast"
+    component={Link}
+    to="/"
+  >
+    Sign Out
+  </Button>
+);
+
+export const Header = ({ classes, sideBarOpen, onSideBarClick, isAuthenticated }) => (
   <div>
     <AppBar className={classNames(classes.appBar, sideBarOpen && classes.appBarShift)}>
       <Toolbar disableGutters={!sideBarOpen}>
@@ -29,13 +49,11 @@ export const Header = ({ classes, sideBarOpen, onSideBarClick }) => (
         <Typography type="title" color="inherit" className={classes.flex} noWrap>
           Open Budget
         </Typography>
-        <Button
-          color="contrast"
-          component={Link}
-          to="/sign_in"
-        >
-          Sign In
-        </Button>
+        {isAuthenticated ?
+          <SignOutButton />
+          :
+          <SignInButton />
+        }
       </Toolbar>
     </AppBar>
   </div>
@@ -45,10 +63,12 @@ Header.propTypes = {
   classes: PropTypes.object.isRequired,
   sideBarOpen: PropTypes.bool.isRequired,
   onSideBarClick: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   sideBarOpen: state.navigation.sideBar.open,
+  isAuthenticated: state.authentication.isAuthenticated,
 });
 
 const mapDispatchToProps = dispatch => ({
