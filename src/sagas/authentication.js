@@ -13,6 +13,7 @@ function* signInUser() {
   const { response, error } = yield call(api.signInUser, values.email, values.password);
   if (response && !error) {
     resolve();
+    localStorage.setItem('authToken', response.access_token);
     yield put(signInSuccess(response));
   } else {
     reject();

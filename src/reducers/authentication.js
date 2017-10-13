@@ -5,11 +5,11 @@ import {
 } from '../actions/authentication';
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: !!localStorage.getItem('authToken'),
   isFetching: false,
   success: false,
   message: null,
-  authToken: null,
+  authToken: localStorage.getItem('authToken'),
 };
 
 const authentication = (state = initialState, { type, ...payload }) => {
