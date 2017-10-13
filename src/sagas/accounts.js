@@ -14,14 +14,12 @@ function* fetchAccounts() {
 
   if (response && !error) {
     resolve();
-    const normalizedAccounts = Object.entries(response.account).map((account) => {
-      return {
-        id: account[1].id,
-        name: account[1].attributes.name,
-        description: account[1].attributes.description,
-        category: account[1].attributes.category,
-      };
-    });
+    const normalizedAccounts = Object.entries(response.account).map(account => ({
+      id: account[1].id,
+      name: account[1].attributes.name,
+      description: account[1].attributes.description,
+      category: account[1].attributes.category,
+    }));
     yield put(fetchAccountsSuccess(normalizedAccounts));
   } else {
     reject();
