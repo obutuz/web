@@ -12,6 +12,7 @@
                 "devDependencies": true
             }
         ],
-        "import/no-named-as-default": "off"
+        "import/no-named-as-default": "off",
+        "arrow-body-style": "off"
     }
 }
