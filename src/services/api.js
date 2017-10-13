@@ -4,10 +4,32 @@ import 'isomorphic-fetch';
 
 const API_HOST = (process.env.NODE_ENV === 'development') ? 'http://localhost:4000/api/' : 'https://api.openbudget.xyz/api/';
 
-function callApi(endpoint) {
+function callApi(endpoint, method = 'get', headers = {}, body = {}) {
   const fullUrl = (endpoint.indexOf(API_HOST) === -1) ? API_HOST + endpoint : endpoint;
+  let options = {
+    method,
+    headers: {
+      Accept: 'application/vnd.api+json',
+      'Content-Type': 'application/vnd.api+json',
+    },
+  };
 
-  return fetch(fullUrl)
+  if (Object.keys(headers).length > 0) {
+    const modifiedHeaders = Object.assign(options.headers, headers);
+    options = Object.assign(options, { headers: modifiedHeaders });
+  }
+
+  if (Object.keys(body).length > 0) {
+    const normalizedBody = {
+      data: {
+        attributes: body,
+      },
+    };
+
+    options = Object.assign(options, { body: JSON.stringify(normalizedBody) });
+  }
+
+  return fetch(fullUrl, options)
     .then(response =>
       response.json().then(json => ({ json, response })),
     ).then(({ json, response }) => {
@@ -16,8 +38,15 @@ function callApi(endpoint) {
       }
 
       const camelizedJson = camelizeKeys(json);
-      const returnObject = Object.assign({}, normalize(camelizedJson));
+      let returnObject = null;
 
+      if (Object.prototype.hasOwnProperty.call(camelizedJson, 'data')) {
+        returnObject = Object.assign({}, normalize(camelizedJson));
+      } else {
+        returnObject = json;
+      }
+
+      window.hithere = returnObject;
       return returnObject;
     })
     .then(
@@ -28,3 +57,6 @@ function callApi(endpoint) {
 
 export const fetchAccounts = () => callApi('accounts');
 export const fetchAccount = id => callApi(`accounts/${id}`);
+
+export const signInUser = (email, password) => callApi('auth/token', 'post', {}, { email, password });
+export const signOutUser = authToken => callApi('auth/token', 'delete', { Authorization: authToken });

@@ -51,7 +51,9 @@ List.propTypes = {
 
 class AccountsList extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchAccountsRequest());
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(fetchAccountsRequest(resolve, reject));
+    });
   }
 
   render() {
