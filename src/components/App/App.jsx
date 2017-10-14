@@ -17,7 +17,7 @@ import Home from '../Home';
 import AccountsList from '../Accounts/Pages/List';
 import SignIn from '../SignIn';
 
-const App = ({ classes, sideBarOpen }) => (
+export const App = ({ classes, sideBarOpen }) => (
   <Router>
     <div className={classes.root}>
       <div className={classes.appFrame}>
