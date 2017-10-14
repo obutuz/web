@@ -13,7 +13,7 @@ import { signInRequest } from '../../actions/authentication';
 
 import TextField from '../Form/TextField';
 
-const SignIn = ({ classes, handleSubmit, onSubmit, isAuthenticated }) => {
+export const SignIn = ({ classes, handleSubmit, onSubmit, isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }
