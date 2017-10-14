@@ -1,5 +1,7 @@
 # OpenBudget UI
 
+[![CircleCI](https://circleci.com/gh/obudget/ui/tree/master.svg?style=svg)](https://circleci.com/gh/obudget/ui/tree/master)
+
 ## Overview
 
 * [OpenBudget](https://openbudget.xyz) is an open source envelope budgeting platform inspired by popular budgeting apps like [YNAB](https://youneedabudget.com) and [GoodBudget](https://goodbudget.com).
