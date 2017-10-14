@@ -47,28 +47,26 @@ export const Header = ({
   isAuthenticated,
   onSignOutClick,
 }) => (
-  <div>
-    <AppBar className={classNames(classes.appBar, sideBarOpen && classes.appBarShift)}>
-      <Toolbar disableGutters={!sideBarOpen}>
-        <IconButton
-          color="contrast"
-          aria-label="open drawer"
-          className={classNames(classes.menuButton, sideBarOpen && classes.hide)}
-          onClick={onSideBarClick}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography type="title" color="inherit" className={classes.flex} noWrap>
-          Open Budget
-        </Typography>
-        {isAuthenticated ?
-          <SignOutButton onSignOutClick={onSignOutClick} />
-          :
-          <SignInButton />
-        }
-      </Toolbar>
-    </AppBar>
-  </div>
+  <AppBar className={classNames(classes.appBar, sideBarOpen && classes.appBarShift)}>
+    <Toolbar disableGutters={!sideBarOpen}>
+      <IconButton
+        color="contrast"
+        aria-label="open drawer"
+        className={classNames(classes.menuButton, sideBarOpen && classes.hide)}
+        onClick={onSideBarClick}
+      >
+        <MenuIcon />
+      </IconButton>
+      <Typography type="title" color="inherit" className={classes.flex} noWrap>
+        Open Budget
+      </Typography>
+      {isAuthenticated ?
+        <SignOutButton onSignOutClick={onSignOutClick} />
+        :
+        <SignInButton />
+      }
+    </Toolbar>
+  </AppBar>
 );
 
 Header.propTypes = {
