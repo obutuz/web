@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/obudget/ui/tree/master.svg?style=svg)](https://circleci.com/gh/obudget/ui/tree/master) [![codecov](https://codecov.io/gh/obudget/ui/branch/master/graph/badge.svg)](https://codecov.io/gh/obudget/ui) [![Greenkeeper badge](https://badges.greenkeeper.io/obudget/ui.svg)](https://greenkeeper.io/)
 
+[![Sponsor](https://app.codesponsor.io/embed/FtXSUnEDZhz4wUWaXdYz3wdD/obudget/ui.svg)](https://app.codesponsor.io/link/FtXSUnEDZhz4wUWaXdYz3wdD/obudget/ui)
+
 ## Overview
 
 * [OpenBudget](https://openbudget.xyz) is an open source envelope budgeting platform inspired by popular budgeting apps like [YNAB](https://youneedabudget.com) and [GoodBudget](https://goodbudget.com).
