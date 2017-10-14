@@ -8,7 +8,7 @@ import Paper from 'material-ui/Paper';
 import styles from './styles';
 import { fetchAccountsRequest } from '../../../../actions/accounts';
 
-const List = ({ classes, accounts }) => (
+export const List = ({ classes, accounts }) => (
   <Paper className={classes.paper}>
     <Table>
       <TableHead>
