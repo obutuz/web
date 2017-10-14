@@ -45,7 +45,7 @@ SideBarItems.propTypes = {
   onSideBarItemClick: PropTypes.func.isRequired,
 };
 
-const SideBar = ({
+export const SideBar = ({
   classes,
   sideBarOpen,
   onSideBarItemClick,
