@@ -1,6 +1,6 @@
 # OpenBudget UI
 
-[![CircleCI](https://circleci.com/gh/obudget/ui/tree/master.svg?style=svg)](https://circleci.com/gh/obudget/ui/tree/master) [![codecov](https://codecov.io/gh/obudget/ui/branch/master/graph/badge.svg)](https://codecov.io/gh/obudget/ui) [![Greenkeeper badge](https://badges.greenkeeper.io/obudget/ui.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/obudget/ui/tree/master.svg?style=svg)](https://circleci.com/gh/obudget/ui/tree/master) [![codecov](https://codecov.io/gh/obudget/ui/branch/master/graph/badge.svg)](https://codecov.io/gh/obudget/ui) [![Greenkeeper badge](https://badges.greenkeeper.io/obudget/ui.svg)](https://greenkeeper.io/) [![Maintainability](https://api.codeclimate.com/v1/badges/33e91f231017c98b01f0/maintainability)](https://codeclimate.com/github/obudget/ui/maintainability)
 
 [![Sponsor](https://app.codesponsor.io/embed/FtXSUnEDZhz4wUWaXdYz3wdD/obudget/ui.svg)](https://app.codesponsor.io/link/FtXSUnEDZhz4wUWaXdYz3wdD/obudget/ui)
 
