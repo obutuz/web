@@ -28,7 +28,7 @@
 git clone https://github.com/obudget/ui.git
 cd ui
 yarn install
-npm start
+yarn start
 ```
 
 ## Developer Notes
