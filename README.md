@@ -1,5 +1,7 @@
 # OpenBudget UI
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/obudget/ui.svg)](https://greenkeeper.io/)
+
 [![CircleCI](https://circleci.com/gh/obudget/ui/tree/master.svg?style=svg)](https://circleci.com/gh/obudget/ui/tree/master)
 
 ## Overview
