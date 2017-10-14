@@ -1,11 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { createMuiTheme } from 'material-ui/styles';
 import { Header } from './Header';
+import shallowWithContext from '../../testUtils';
 
 describe('<Header />', () => {
-  const muiTheme = createMuiTheme();
-  const shallowWithContext = node => shallow(node, { context: { muiTheme } }).dive();
   let MockObject;
   let props;
 

@@ -4,6 +4,7 @@
 // https://github.com/facebookincubator/create-react-app/issues/3199#issuecomment-332842582
 import raf from './polyFill';
 import Enzyme from 'enzyme';
+import { createMuiTheme } from 'material-ui/styles';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-enzyme';
 
