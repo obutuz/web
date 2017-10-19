@@ -2,6 +2,7 @@
   "name": "open_budget",
   "version": "0.1.0",
   "private": true,
+  "license": "GPL-3.0",
   "dependencies": {
     "classnames": "^2.2.5",
     "connected-react-router": "^4.2.3",
