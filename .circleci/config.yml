@@ -16,3 +16,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test -- --coverage
       - run: yarn run codecov
+notify:
+  webhooks:
+    - url: https://webhooks.gitter.im/e/990bab28f3e035e23a5b
