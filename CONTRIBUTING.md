@@ -77,3 +77,40 @@ Before pushing your code, make sure that all tests are passing to know that your
 
 * Add as many comments and documentation as you need for the code that you're going to write. OpenBudget should be accessible for developers of all experience and skill levels. Better to have too many than none at all.
 * Don't be shy about adding line breaks between your code. A couple of empty lines between blocks of code can really improve readability.
+
+## New to React or Web Development?
+
+The greatest challenge about being a Javascript developer in this day and age is that there are so many libraries and frameworks to choose from.
+
+Naturally, learning one piece of Javascript technology won't necessarily mean that you'll be able to learn other alternatives immediately. Different technologies have different way of doing things.
+
+React.js is a library for building user interfaces. The great thing about React is that it only focuses on the view-side of the MVC architecture. This makes it a lot simpler compared to other popular libraries like Angular and Ember.
+
+When it comes to React.js, it's challenging in its own right because you have to learn multiple things at the same time. On a basic level, you have to learn the following things to get started on this project:
+
+* [ES6](http://es6-features.org)
+* [React](https://reactjs.org/)
+* [Redux](http://redux.js.org/)
+
+It will take a lot of time and effort on your part to learn these things, but once everything clicks, you'll see why we decided to go with these technologies in the first place. You'll also come to love the technologies involved in this project.
+
+With that said, the aim of this project is to be approachable enough for anyone (even beginners) to be able to contribute to. In most cases, you should be capable enough to contribute to this project after getting a grasp of the basics of React and Redux.
+
+Here are some resources to help you get started on your journey to the world of React.
+
+### React
+
+* [Official tutorial from React's website](https://reactjs.org/tutorial/tutorial.html)
+* [Awesome React - A collection of resources about React](https://github.com/enaqx/awesome-react)
+
+### Redux
+
+* [Official introduction guide from Redux's website](http://redux.js.org/docs/basics/)
+* [redux-tutorial - A step by step tutorial for learning Redux](https://github.com/happypoulp/redux-tutorial)
+* [Getting Started With React Redux by Yang-Hsing](https://www.codementor.io/mz026/getting-started-with-react-redux-an-intro-8r6kurcxf)
+
+### ES6
+
+* [ES6 Features](http://es6-features.org/)
+* [ES6-Learning - A collection of resources for learning ES6](https://github.com/ericdouglas/ES6-Learning)
+* [Learn ES6 by doing it by ES6 Katas](http://es6katas.org/)
