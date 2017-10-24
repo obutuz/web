@@ -35,6 +35,8 @@ yarn install
 yarn start
 ```
 
+For more information, check out our [guidelines for contributing](CONTRIBUTING.md)
+
 ## Developer Notes
 
 * In order to run this locally, you also need to setup [OpenBudget Core](https://github.com/obudget/core) and run it alongside OpenBudget UI.
