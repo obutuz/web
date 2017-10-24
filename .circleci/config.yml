@@ -9,13 +9,16 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
+      - run: sudo yarn global add greenkeeper-lockfile@1
       - run: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: greenkeeper-lockfile-update
       - run: yarn test -- --coverage
       - run: yarn run codecov
+      - run: greenkeeper-lockfile-upload
 notify:
   webhooks:
     - url: https://webhooks.gitter.im/e/990bab28f3e035e23a5b
