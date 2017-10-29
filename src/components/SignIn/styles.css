@@ -1,0 +1,7 @@
+body > div,
+body > div > div,
+body > div > div > div,
+body > div > div > div > main,
+body > div > div > div > main > div.signin-form {
+  height: 100%;
+}

@@ -1,63 +1,76 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from 'material-ui/styles/withStyles';
 import { connect } from 'react-redux';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
 import { reduxForm, Field } from 'redux-form';
-import Button from 'material-ui/Button';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from 'semantic-ui-react';
 
-import styles from './styles';
 import { signInRequest } from '../../actions/authentication';
+
+import './styles.css';
+import logo from './logo.png';
 
 import TextField from '../Form/TextField';
 
-export const SignIn = ({ classes, handleSubmit, onSubmit, isAuthenticated }) => {
+export const SignIn = ({ handleSubmit, onSubmit, isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }
 
   return (
-    <Paper className={classes.root} elevation={4}>
-      <Typography type="headline" component="h3">
-        Sign In
-      </Typography>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <Field
-            id="email"
-            name="email"
-            type="email"
-            component={TextField}
-            label="Email"
-          />
-        </div>
-        <div>
-          <Field
-            id="password"
-            name="password"
-            type="password"
-            component={TextField}
-            label="Password"
-          />
-        </div>
-        <div>
-          <Button
-            raised
-            color="primary"
-            type="submit"
-          >
-            Sign In
-          </Button>
-        </div>
-      </form>
-    </Paper>
+    <div className="signin-form">
+      <Grid
+        textAlign="center"
+        style={{ height: '100%' }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            <Image src={logo} />
+            Log-in to your account
+          </Header>
+          <Form size="large" onSubmit={handleSubmit(onSubmit)}>
+            <Segment stacked>
+              <Field
+                icon="user"
+                iconPosition="left"
+                id="email"
+                name="email"
+                placeholder="Email address"
+                type="email"
+                component={TextField}
+              />
+              <Field
+                icon="lock"
+                iconPosition="left"
+                id="password"
+                name="password"
+                placeholder="Password"
+                type="password"
+                component={TextField}
+              />
+
+              <Button color="teal" fluid size="large">Login</Button>
+            </Segment>
+          </Form>
+          <Message>
+            New to us? <Link to="/sign_up">Sign Up</Link>
+          </Message>
+        </Grid.Column>
+      </Grid>
+    </div>
   );
 };
 
 SignIn.propTypes = {
-  classes: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
@@ -75,8 +88,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const SignInWithStyle = withStyles(styles)(SignIn);
-
-const SignInForm = reduxForm({ form: 'signIn' })(SignInWithStyle);
+const SignInForm = reduxForm({ form: 'signIn' })(SignIn);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);
