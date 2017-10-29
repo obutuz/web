@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import 'semantic-ui-css/semantic.min.css';
 import { connect } from 'react-redux';
 import withStyles from 'material-ui/styles/withStyles';
 import {
