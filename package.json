@@ -4,20 +4,14 @@
   "private": true,
   "license": "GPL-3.0",
   "dependencies": {
-    "classnames": "^2.2.5",
     "connected-react-router": "^4.2.3",
     "history": "^4.7.2",
     "humps": "^2.0.1",
     "isomorphic-fetch": "^2.2.1",
     "json-api-normalizer": "^0.4.2",
-    "jss": "^9.0.0",
-    "jss-preset-default": "^4.0.1",
-    "material-ui": "next",
-    "material-ui-icons": "^1.0.0-beta.10",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-jss": "^7.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.15",
@@ -25,8 +19,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^0.16.0",
-    "theming": "https://github.com/iamstarkov/theming.git#greenkeeper/react-16.0.0"
+    "redux-saga": "^0.16.0"
   },
   "scripts": {
     "start": "react-scripts start",
