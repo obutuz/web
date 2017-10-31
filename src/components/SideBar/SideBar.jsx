@@ -1,92 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withStyles } from 'material-ui/styles';
 import { Link } from 'react-router-dom';
-import Drawer from 'material-ui/Drawer';
-import Divider from 'material-ui/Divider';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import IconButton from 'material-ui/IconButton';
-import HomeIcon from 'material-ui-icons/Home';
-import AccountBalanceIcon from 'material-ui-icons/AccountBalance';
-import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
-
-import styles from './styles';
-import { closeSideBar } from '../../actions/navigation';
-
-const SideBarItems = ({ onSideBarItemClick }) => (
-  <List>
-    <ListItem
-      button
-      component={Link}
-      to="/"
-      onClick={onSideBarItemClick}
-    >
-      <ListItemIcon>
-        <HomeIcon />
-      </ListItemIcon>
-      <ListItemText primary="Home" />
-    </ListItem>
-    <ListItem
-      button
-      component={Link}
-      to="/accounts"
-      onClick={onSideBarItemClick}
-    >
-      <ListItemIcon>
-        <AccountBalanceIcon />
-      </ListItemIcon>
-      <ListItemText primary="Accounts" />
-    </ListItem>
-  </List>
-);
-
-SideBarItems.propTypes = {
-  onSideBarItemClick: PropTypes.func.isRequired,
-};
+import {
+  Sidebar,
+  Icon,
+  Menu,
+} from 'semantic-ui-react';
 
 export const SideBar = ({
-  classes,
   sideBarOpen,
-  onSideBarItemClick,
 }) => (
-  <Drawer
-    type="persistent"
-    classes={{
-      paper: classes.drawerPaper,
-    }}
-    open={sideBarOpen}
+  <Sidebar
+    as={Menu}
+    animation="push"
+    width="thin"
+    visible={sideBarOpen}
+    icon="labeled"
+    vertical
+    inverted
   >
-    <div className={classes.drawerInner}>
-      <div className={classes.drawerHeader}>
-        <IconButton onClick={onSideBarItemClick}>
-          <ChevronLeftIcon />
-        </IconButton>
-      </div>
-      <Divider />
-      <SideBarItems
-        onSideBarItemClick={onSideBarItemClick}
-      />
-    </div>
-  </Drawer>
+    <Menu.Item name="home" as={Link} to="/">
+      <Icon name="home" />
+      Home
+    </Menu.Item>
+    <Menu.Item name="accounts" as={Link} to="/accounts">
+      <Icon name="university" />
+      Accounts
+    </Menu.Item>
+  </Sidebar>
 );
 
 SideBar.propTypes = {
-  classes: PropTypes.object.isRequired,
   sideBarOpen: PropTypes.bool.isRequired,
-  onSideBarItemClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   sideBarOpen: state.navigation.sideBar.open,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onSideBarItemClick: () => {
-    dispatch(closeSideBar());
-  },
-});
-
-const SideBarWithStyle = withStyles(styles)(SideBar);
-
-export default connect(mapStateToProps, mapDispatchToProps)(SideBarWithStyle);
+export default connect(mapStateToProps, null)(SideBar);
