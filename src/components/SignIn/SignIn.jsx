@@ -16,7 +16,7 @@ import {
 import { signInRequest } from '../../actions/authentication';
 
 import './styles.css';
-import logo from './logo.png';
+import logo from '../App/logo.png';
 
 import TextField from '../Form/TextField';
 
