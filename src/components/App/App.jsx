@@ -11,13 +11,15 @@ import Home from '../Home';
 import AccountsList from '../Accounts/Pages/List';
 import SignIn from '../SignIn';
 
+import './styles.css';
+
 export const App = () => (
   <Router>
     <div>
       <div>
         <Header />
         <SideBar />
-        <main>
+        <main className="app-content">
           <Route exact path="/" component={Home} />
           <Route path="/accounts" component={AccountsList} />
           <Route path="/sign_in" component={SignIn} />
