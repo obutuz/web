@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   sideBar: {
-    open: false,
+    open: true,
   },
 };
 

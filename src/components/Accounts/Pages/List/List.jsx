@@ -1,42 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import withStyles from 'material-ui/styles/withStyles';
-import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
-import Paper from 'material-ui/Paper';
+import { Container, Table } from 'semantic-ui-react';
 
-import styles from './styles';
 import { fetchAccountsRequest } from '../../../../actions/accounts';
 
-export const List = ({ classes, accounts }) => (
-  <Paper className={classes.paper}>
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell>ID</TableCell>
-          <TableCell>Name</TableCell>
-          <TableCell>Description</TableCell>
-          <TableCell>Category</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+export const List = ({ accounts }) => (
+  <Container>
+    <Table celled>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>ID</Table.HeaderCell>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>Description</Table.HeaderCell>
+          <Table.HeaderCell>Category</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
         {accounts.map((account) => {
           return (
-            <TableRow key={account.id}>
-              <TableCell>{account.id}</TableCell>
-              <TableCell>{account.name}</TableCell>
-              <TableCell>{account.description}</TableCell>
-              <TableCell>{account.category}</TableCell>
-            </TableRow>
+            <Table.Row key={account.id}>
+              <Table.Cell>{account.id}</Table.Cell>
+              <Table.Cell>{account.name}</Table.Cell>
+              <Table.Cell>{account.description}</Table.Cell>
+              <Table.Cell>{account.category}</Table.Cell>
+            </Table.Row>
           );
         })}
-      </TableBody>
+      </Table.Body>
     </Table>
-  </Paper>
+  </Container>
 );
 
 List.propTypes = {
-  classes: PropTypes.object.isRequired,
   accounts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -57,7 +53,6 @@ class AccountsList extends React.Component {
   render() {
     return (
       <List
-        classes={this.props.classes}
         accounts={this.props.accounts}
       />
     );
@@ -65,7 +60,6 @@ class AccountsList extends React.Component {
 }
 
 AccountsList.propTypes = {
-  classes: PropTypes.object.isRequired,
   accounts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -83,6 +77,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ListWithStyle = withStyles(styles)(AccountsList);
-
-export default connect(mapStateToProps, null)(ListWithStyle);
+export default connect(mapStateToProps, null)(AccountsList);

@@ -1,39 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MuiTextField from 'material-ui/TextField';
+import { Form } from 'semantic-ui-react';
+
 
 const TextField = ({
+  input,
   id,
   name,
-  label,
-  input,
-  className,
+  icon,
+  iconPosition,
+  placeholder,
   type,
 }) => (
-  <MuiTextField
+  <Form.Input
+    fluid
     id={id}
     name={name}
-    label={label}
-    className={className}
+    icon={icon}
+    iconPosition={iconPosition}
+    placeholder={placeholder}
     type={type}
     {...input}
   />
 );
 
 TextField.propTypes = {
+  input: PropTypes.object.isRequired,
   id: PropTypes.string,
   name: PropTypes.string,
-  label: PropTypes.string,
-  input: PropTypes.object.isRequired,
-  className: PropTypes.string,
+  icon: PropTypes.string,
+  iconPosition: PropTypes.string,
+  placeholder: PropTypes.string,
   type: PropTypes.string,
 };
 
 TextField.defaultProps = {
   id: '',
   name: '',
-  label: '',
-  className: '',
+  icon: '',
+  iconPosition: '',
+  placeholder: '',
   type: '',
 };
 
