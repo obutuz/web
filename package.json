@@ -20,7 +20,6 @@
     "redux-form": "^7.0.4",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
-    "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.75.1"
   },
   "scripts": {
@@ -40,6 +39,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "jest-enzyme": "^4.0.1",
-    "react-test-renderer": "^16.0.0"
+    "react-test-renderer": "^16.0.0",
+    "semantic-ui": "^2.2.13"
   }
 }
