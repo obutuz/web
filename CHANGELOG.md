@@ -14,6 +14,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add [Code of Conduct](CODE_OF_CONDUCT.md)
 - Add [Contributing Guidelines](CONTRIBUTING.md)
 
+### Changed
+
+- Pass auth tokens to all Accounts endpoints now.
+
+### Fixed
+
+- Fix the way we're passing auth tokens when signing out users.
+
 ## 0.1.0 - 2017-10-14
 
 ### Added
