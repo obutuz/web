@@ -8,19 +8,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- This changelog.
+- This changelog. ([#20](https://github.com/obudget/ui/pull/20))
 - A favicon / logo for the site.
 - Use GPL 3.0 as the license for this project.
-- Add [Code of Conduct](CODE_OF_CONDUCT.md)
-- Add [Contributing Guidelines](CONTRIBUTING.md)
+- Add [Code of Conduct](CODE_OF_CONDUCT.md). ([#17](https://github.com/obudget/ui/pull/17))
+- Add [Contributing Guidelines](CONTRIBUTING.md). ([#17](https://github.com/obudget/ui/pull/17))
 
 ### Changed
 
-- Pass auth tokens to all Accounts endpoints now.
+- Switch UI framework to [Semantic UI](https://react.semantic-ui.com). ([#24](https://github.com/obudget/ui/pull/24))
+- Pass auth tokens to all Accounts endpoints now. ([#26](https://github.com/obudget/ui/pull/26))
 
 ### Fixed
 
-- Fix the way we're passing auth tokens when signing out users.
+- Fix the way we're passing auth tokens when signing out users. ([#26](https://github.com/obudget/ui/pull/26))
 
 ## 0.1.0 - 2017-10-14
 
