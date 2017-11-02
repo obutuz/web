@@ -9,6 +9,7 @@ import {
 } from 'semantic-ui-react';
 
 import { signOutRequest } from '../../actions/authentication';
+import { toggleSideBar } from '../../actions/navigation';
 
 import logo from '../App/logo.png';
 
@@ -32,11 +33,15 @@ const UnauthenticatedMenu = () => (
 export const Header = ({
   isAuthenticated,
   onSignOutClick,
+  onSidebarClick,
 }) => (
   <Menu
     fixed="top"
     inverted
   >
+    <Menu.Item as="a" style={{ marginLeft: '12em' }} onClick={onSidebarClick}>
+      Menu
+    </Menu.Item>
     <Container>
       <Menu.Item as={Link} to="/" header>
         <Image
@@ -61,6 +66,7 @@ export const Header = ({
 Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   onSignOutClick: PropTypes.func.isRequired,
+  onSidebarClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -72,6 +78,9 @@ const mapDispatchToProps = dispatch => ({
     return new Promise((resolve) => {
       dispatch(signOutRequest(resolve));
     });
+  },
+  onSidebarClick: () => {
+    dispatch(toggleSideBar());
   },
 });
 
