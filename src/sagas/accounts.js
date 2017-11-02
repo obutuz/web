@@ -10,7 +10,7 @@ import {
 
 function* fetchAccounts() {
   const { resolve, reject } = yield take(FETCH_ACCOUNTS_REQUEST);
-  const { response, error } = yield call(api.fetchAccounts);
+  const { response, error } = yield call(api.fetchAccounts, localStorage.getItem('authToken'));
 
   if (response && !error) {
     resolve();
