@@ -59,4 +59,4 @@ export const fetchAccounts = () => callApi('accounts');
 export const fetchAccount = id => callApi(`accounts/${id}`);
 
 export const signInUser = (email, password) => callApi('auth/token', 'post', {}, { email, password });
-export const signOutUser = authToken => callApi('auth/token', 'delete', { Authorization: authToken });
+export const signOutUser = authToken => callApi('auth/token', 'delete', { Authorization: `Bearer ${authToken}` });
