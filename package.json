@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "GPL-3.0",
+  "homepage": "https://app.openbudget.xyz",
   "dependencies": {
     "connected-react-router": "^4.2.3",
     "history": "^4.7.2",
