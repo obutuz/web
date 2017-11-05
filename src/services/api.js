@@ -46,7 +46,6 @@ function callApi(endpoint, method = 'get', headers = {}, body = {}) {
         returnObject = json;
       }
 
-      window.hithere = returnObject;
       return { body: returnObject, headers: response.headers };
     })
     .then(
@@ -59,4 +58,5 @@ export const fetchAccounts = authToken => callApi('accounts', 'get', { Authoriza
 export const fetchAccount = (id, authToken) => callApi(`accounts/${id}`, 'get', { Authorization: authToken });
 
 export const signInUser = (email, password) => callApi('auth/token', 'post', {}, { email, password });
-export const signOutUser = authToken => callApi('auth/token', 'delete', { Authorization: authToken });
+export const signOutUser = authToken => callApi('auth/token', 'delete', { Authorization: `Bearer ${authToken}` });
+export const signUpUser = (email, password) => callApi('users', 'post', {}, { email, password });
