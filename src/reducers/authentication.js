@@ -5,6 +5,9 @@ import {
   SIGN_OUT_REQUEST,
   SIGN_OUT_SUCCESS,
   SIGN_OUT_FAILURE,
+  SIGN_UP_REQUEST,
+  SIGN_UP_SUCCESS,
+  SIGN_UP_FAILURE,
 } from '../actions/authentication';
 
 const initialState = {
@@ -64,6 +67,30 @@ const authentication = (state = initialState, { type, ...payload }) => {
       return {
         ...state,
         isAuthenticated: true,
+        isFetching: false,
+        success: false,
+        message: payload.message,
+      };
+    case SIGN_UP_REQUEST:
+      return {
+        ...state,
+        isAuthenticated: false,
+        isFetching: true,
+        success: false,
+        message: null,
+      };
+    case SIGN_UP_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        isFetching: false,
+        success: true,
+        message: null,
+      };
+    case SIGN_UP_FAILURE:
+      return {
+        ...state,
+        isAuthenticated: false,
         isFetching: false,
         success: false,
         message: payload.message,
