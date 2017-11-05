@@ -10,6 +10,7 @@ import SideBar from '../SideBar';
 import Home from '../Home';
 import AccountsList from '../Accounts/Pages/List';
 import SignIn from '../SignIn';
+import SignUp from '../SignUp';
 
 import '../../semantic-ui/dist/semantic.min.css';
 import './styles.css';
@@ -26,6 +27,7 @@ export const App = () => (
               <Route exact path="/" component={Home} />
               <Route path="/accounts" component={AccountsList} />
               <Route path="/sign_in" component={SignIn} />
+              <Route path="/sign_up" component={SignUp} />
             </main>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
