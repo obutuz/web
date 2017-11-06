@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Switch UI framework to [Semantic UI](https://react.semantic-ui.com). ([#24](https://github.com/obudget/ui/pull/24))
 - Pass auth tokens to all Accounts endpoints now. ([#26](https://github.com/obudget/ui/pull/26))
+- Add headers to API response objects. [#31](https://github.com/obudget/ui/pull/31)
 
 ### Fixed
 
