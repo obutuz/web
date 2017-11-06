@@ -9,7 +9,7 @@ import { signUpRequest } from '../../actions/authentication';
 
 import TextField from '../Form/TextField';
 
-const SignUp = ({ handleSubmit, onSubmit, isAuthenticated }) => {
+export const SignUp = ({ handleSubmit, onSubmit, isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }
