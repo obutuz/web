@@ -15,8 +15,8 @@ function* fetchAccounts() {
   if (response && !error) {
     resolve();
     let normalizedAccounts = [];
-    if (Object.keys(response).length > 0) {
-      normalizedAccounts = Object.entries(response.account).map(account => ({
+    if (Object.keys(response.body).length > 0) {
+      normalizedAccounts = Object.entries(response.body.account).map(account => ({
         id: account[1].id,
         name: account[1].attributes.name,
         description: account[1].attributes.description,

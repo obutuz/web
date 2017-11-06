@@ -15,8 +15,9 @@ export function* signInUser() {
   const { response, error } = yield call(api.signInUser, values.email, values.password);
   if (response && !error) {
     resolve();
-    localStorage.setItem('authToken', response.access_token);
-    yield put(signInSuccess(response));
+    const authorizationHeader = response.headers.get('Authorization');
+    localStorage.setItem('authToken', authorizationHeader);
+    yield put(signInSuccess(authorizationHeader));
   } else {
     reject();
     yield put(signInFailure(error));
