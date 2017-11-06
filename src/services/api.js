@@ -47,7 +47,7 @@ function callApi(endpoint, method = 'get', headers = {}, body = {}) {
       }
 
       window.hithere = returnObject;
-      return returnObject;
+      return { body: returnObject, headers: response.headers };
     })
     .then(
       response => ({ response }),
@@ -55,8 +55,8 @@ function callApi(endpoint, method = 'get', headers = {}, body = {}) {
     );
 }
 
-export const fetchAccounts = authToken => callApi('accounts', 'get', { Authorization: `Bearer ${authToken}` });
-export const fetchAccount = (id, authToken) => callApi(`accounts/${id}`, 'get', { Authorization: `Bearer ${authToken}` });
+export const fetchAccounts = authToken => callApi('accounts', 'get', { Authorization: authToken });
+export const fetchAccount = (id, authToken) => callApi(`accounts/${id}`, 'get', { Authorization: authToken });
 
 export const signInUser = (email, password) => callApi('auth/token', 'post', {}, { email, password });
-export const signOutUser = authToken => callApi('auth/token', 'delete', { Authorization: `Bearer ${authToken}` });
+export const signOutUser = authToken => callApi('auth/token', 'delete', { Authorization: authToken });

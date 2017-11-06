@@ -13,9 +13,9 @@ export const signInRequest = (values, resolve, reject) => ({
   reject,
 });
 
-export const signInSuccess = data => ({
+export const signInSuccess = authToken => ({
   type: SIGN_IN_SUCCESS,
-  authToken: data.access_token,
+  authToken,
 });
 
 export const signInFailure = error => ({
