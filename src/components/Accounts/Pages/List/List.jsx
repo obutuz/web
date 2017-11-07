@@ -33,14 +33,12 @@ export const List = ({ accounts }) => (
 );
 
 List.propTypes = {
-  accounts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string,
-      category: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
+  accounts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    category: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
 };
 
 class AccountsList extends React.Component {
@@ -60,14 +58,12 @@ class AccountsList extends React.Component {
 }
 
 AccountsList.propTypes = {
-  accounts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string,
-      category: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
+  accounts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    category: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 
