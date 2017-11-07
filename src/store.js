@@ -13,13 +13,11 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   connectRouter(history)(rootReducer),
   {},
-  compose(
-    applyMiddleware(
-      routerMiddleware(history),
-      sagaMiddleware,
-      logger,
-    ),
-  ),
+  compose(applyMiddleware(
+    routerMiddleware(history),
+    sagaMiddleware,
+    logger,
+  )),
 );
 
 sagaMiddleware.run(rootSaga);

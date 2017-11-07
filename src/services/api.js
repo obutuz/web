@@ -31,8 +31,7 @@ function callApi(endpoint, method = 'get', headers = {}, body = {}) {
 
   return fetch(fullUrl, options)
     .then(response =>
-      response.json().then(json => ({ json, response })),
-    ).then(({ json, response }) => {
+      response.json().then(json => ({ json, response }))).then(({ json, response }) => {
       if (!response.ok) {
         return Promise.reject(json);
       }

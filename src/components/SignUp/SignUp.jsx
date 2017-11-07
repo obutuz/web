@@ -39,7 +39,7 @@ export const SignUp = ({ handleSubmit, onSubmit, isAuthenticated }) => {
       </Form>
     </Container>
   );
-}
+};
 
 SignUp.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
