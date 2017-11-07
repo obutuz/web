@@ -7156,7 +7156,7 @@ selfsigned@^1.9.1:
   dependencies:
     node-forge "0.6.33"
 
-semantic-ui-react@0.76.0:
+semantic-ui-react@^0.76.0:
   version "0.76.0"
   resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.76.0.tgz#39d8135416d787d904e0361399006fb8e0b24c8a"
   dependencies:
@@ -7198,6 +7198,7 @@ semantic-ui@^2.2.13:
     gulp-watch "^4.3.11"
     jquery "^3.2.1"
     map-stream "^0.1.0"
+    merge-stream "^1.0.0"
     mkdirp "^0.5.1"
     prompt-sui "^3.2.1"
     require-dot-file "^0.4.0"
