@@ -55,6 +55,7 @@ function callApi(endpoint, method = 'get', headers = {}, body = {}) {
 
 export const fetchAccounts = authToken => callApi('accounts', 'get', { Authorization: authToken });
 export const fetchAccount = (id, authToken) => callApi(`accounts/${id}`, 'get', { Authorization: authToken });
+export const createAccount = (name, description, category, authToken) => callApi('accounts', 'post', { Authorization: authToken }, { name, description, category });
 
 export const signInUser = (email, password) => callApi('auth/token', 'post', {}, { email, password });
 export const signOutUser = authToken => callApi('auth/token', 'delete', { Authorization: `Bearer ${authToken}` });

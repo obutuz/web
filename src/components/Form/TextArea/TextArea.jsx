@@ -1,46 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Form } from 'semantic-ui-react';
 
 import BaseFormField from '../BaseFormField';
 
-const TextField = ({
+const TextArea = ({
   input,
   id,
   name,
-  icon,
-  iconPosition,
   placeholder,
-  type,
 }) => (
   <BaseFormField
-    fluid
     id={id}
     name={name}
-    icon={icon}
-    iconPosition={iconPosition}
     placeholder={placeholder}
-    type={type}
     input={input}
+    as={Form.TextArea}
   />
 );
 
-TextField.propTypes = {
+TextArea.propTypes = {
   input: PropTypes.object.isRequired,
   id: PropTypes.string,
   name: PropTypes.string,
-  icon: PropTypes.string,
-  iconPosition: PropTypes.string,
   placeholder: PropTypes.string,
-  type: PropTypes.string,
 };
 
-TextField.defaultProps = {
+TextArea.defaultProps = {
   id: '',
   name: '',
-  icon: null,
-  iconPosition: null,
   placeholder: '',
-  type: '',
 };
 
-export default TextField;
+export default TextArea;

@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add [Code of Conduct](CODE_OF_CONDUCT.md). ([#17](https://github.com/obudget/ui/pull/17))
 - Add [Contributing Guidelines](CONTRIBUTING.md). ([#17](https://github.com/obudget/ui/pull/17))
 - Add page for user registration. [#32](https://github.com/obudget/ui/pull/32)
+- Add page for creating new budget accounts. [#36](https://github.com/obudget/ui/pull/36)
 
 ### Changed
 
