@@ -29,7 +29,7 @@ const accountTypes = [
   },
 ];
 
-const CreateAccount = ({ handleSubmit, onSubmit }) => (
+export const CreateAccount = ({ handleSubmit, onSubmit }) => (
   <Container>
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Field>
