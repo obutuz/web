@@ -69,7 +69,7 @@ AccountsList.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    accounts: state.accounts.fetchAccounts.accounts,
+    accounts: state.accounts.accountsList,
   };
 };
 

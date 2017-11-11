@@ -8,7 +8,7 @@ import {
 } from '../actions/accounts';
 
 const initialState = {
-  accounts: [],
+  accountsList: [],
   activeAccount: null,
   isFetching: false,
   success: false,
@@ -20,7 +20,7 @@ const accounts = (state = initialState, { type, ...payload }) => {
     case FETCH_ACCOUNTS_REQUEST:
       return {
         ...state,
-        accounts: [],
+        accountsList: [],
         isFetching: true,
         success: false,
         message: null,
@@ -28,7 +28,7 @@ const accounts = (state = initialState, { type, ...payload }) => {
     case FETCH_ACCOUNTS_SUCCESS:
       return {
         ...state,
-        accounts: payload.accounts,
+        accountsList: payload.accounts,
         isFetching: false,
         success: true,
         message: null,
@@ -36,7 +36,7 @@ const accounts = (state = initialState, { type, ...payload }) => {
     case FETCH_ACCOUNTS_FAILURE:
       return {
         ...state,
-        accounts: [],
+        accountsList: [],
         isFetching: false,
         success: false,
         message: payload.message,
