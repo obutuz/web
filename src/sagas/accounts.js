@@ -56,6 +56,6 @@ export function* createAccount() {
     yield put(createAccountSuccess(normalizedAccounts[0]));
   } else {
     reject();
-    yield put(fetchAccountsFailure(error));
+    yield put(createAccountFailure(error));
   }
 }
