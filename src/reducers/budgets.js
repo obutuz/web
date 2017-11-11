@@ -5,7 +5,7 @@ import {
 } from '../actions/budgets';
 
 const initialState = {
-  budgets: [],
+  budgetsList: [],
   isFetching: false,
   success: false,
   message: null,
@@ -16,7 +16,7 @@ const budgets = (state = initialState, { type, ...payload }) => {
     case FETCH_BUDGETS_REQUEST:
       return {
         ...state,
-        budgets: [],
+        budgetsList: [],
         isFetching: true,
         success: false,
         message: null,
@@ -24,7 +24,7 @@ const budgets = (state = initialState, { type, ...payload }) => {
     case FETCH_BUDGETS_SUCCESS:
       return {
         ...state,
-        budgets: payload.budgets,
+        budgetsList: payload.budgets,
         isFetching: false,
         success: true,
         message: null,
@@ -32,7 +32,7 @@ const budgets = (state = initialState, { type, ...payload }) => {
     case FETCH_BUDGETS_FAILURE:
       return {
         ...state,
-        budgets: [],
+        budgetsList: [],
         isFetching: false,
         success: false,
         message: payload.message,

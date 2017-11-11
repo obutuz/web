@@ -65,7 +65,7 @@ BudgetsList.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    budgets: state.budgets.budgets,
+    budgets: state.budgets.budgetsList,
   };
 };
 
