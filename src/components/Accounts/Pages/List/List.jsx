@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Container, Table } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { fetchAccountsRequest } from '../../../../actions/accounts';
 
@@ -20,8 +21,8 @@ export const List = ({ accounts }) => (
         {accounts.map((account) => {
           return (
             <Table.Row key={account.id}>
-              <Table.Cell>{account.id}</Table.Cell>
-              <Table.Cell>{account.name}</Table.Cell>
+              <Table.Cell><Link to={`/accounts/${account.id}`}>{account.id}</Link></Table.Cell>
+              <Table.Cell><Link to={`/accounts/${account.id}`}>{account.name}</Link></Table.Cell>
               <Table.Cell>{account.description}</Table.Cell>
               <Table.Cell>{account.category}</Table.Cell>
             </Table.Row>
