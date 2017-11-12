@@ -24,58 +24,64 @@ const normalizeAccounts = (collection) => {
 };
 
 export function* fetchAccounts() {
-  const { resolve, reject } = yield take(FETCH_ACCOUNTS_REQUEST);
-  const { response, error } = yield call(api.fetchAccounts, localStorage.getItem('authToken'));
+  while (true) {
+    const { resolve, reject } = yield take(FETCH_ACCOUNTS_REQUEST);
+    const { response, error } = yield call(api.fetchAccounts, localStorage.getItem('authToken'));
 
-  if (response && !error) {
-    resolve();
-    let normalizedAccounts = [];
-    if (Object.keys(response.body).length > 0) {
-      normalizedAccounts = normalizeAccounts(response.body.account);
+    if (response && !error) {
+      resolve();
+      let normalizedAccounts = [];
+      if (Object.keys(response.body).length > 0) {
+        normalizedAccounts = normalizeAccounts(response.body.account);
+      }
+      yield put(fetchAccountsSuccess(normalizedAccounts));
+    } else {
+      reject();
+      yield put(fetchAccountsFailure(error));
     }
-    yield put(fetchAccountsSuccess(normalizedAccounts));
-  } else {
-    reject();
-    yield put(fetchAccountsFailure(error));
   }
 }
 
 export function* fetchAccount() {
-  const { resolve, reject, id } = yield take(FETCH_ACCOUNT_REQUEST);
-  const { response, error } = yield call(api.fetchAccount, id, localStorage.getItem('authToken'));
+  while (true) {
+    const { resolve, reject, id } = yield take(FETCH_ACCOUNT_REQUEST);
+    const { response, error } = yield call(api.fetchAccount, id, localStorage.getItem('authToken'));
 
-  if (response && !error) {
-    resolve();
-    let normalizedAccounts = [];
-    if (Object.keys(response.body).length > 0) {
-      normalizedAccounts = normalizeAccounts(response.body.account);
+    if (response && !error) {
+      resolve();
+      let normalizedAccounts = [];
+      if (Object.keys(response.body).length > 0) {
+        normalizedAccounts = normalizeAccounts(response.body.account);
+      }
+      yield put(fetchAccountSuccess(normalizedAccounts[0]));
+    } else {
+      reject();
+      yield put(fetchAccountFailure(error));
     }
-    yield put(fetchAccountSuccess(normalizedAccounts[0]));
-  } else {
-    reject();
-    yield put(fetchAccountFailure(error));
   }
 }
 
 export function* createAccount() {
-  const { values, resolve, reject } = yield take(CREATE_ACCOUNT_REQUEST);
-  const { response, error } = yield call(
-    api.createAccount,
-    values.account_name,
-    values.account_description,
-    values.account_category,
-    localStorage.getItem('authToken'),
-  );
+  while (true) {
+    const { values, resolve, reject } = yield take(CREATE_ACCOUNT_REQUEST);
+    const { response, error } = yield call(
+      api.createAccount,
+      values.account_name,
+      values.account_description,
+      values.account_category,
+      localStorage.getItem('authToken'),
+    );
 
-  if (response && !error) {
-    resolve();
-    let normalizedAccounts = [];
-    if (Object.keys(response.body).length > 0) {
-      normalizedAccounts = normalizeAccounts(response.body.account);
+    if (response && !error) {
+      resolve();
+      let normalizedAccounts = [];
+      if (Object.keys(response.body).length > 0) {
+        normalizedAccounts = normalizeAccounts(response.body.account);
+      }
+      yield put(createAccountSuccess(normalizedAccounts[0]));
+    } else {
+      reject();
+      yield put(createAccountFailure(error));
     }
-    yield put(createAccountSuccess(normalizedAccounts[0]));
-  } else {
-    reject();
-    yield put(createAccountFailure(error));
   }
 }
