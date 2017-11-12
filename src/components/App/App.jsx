@@ -10,6 +10,7 @@ import SideBar from '../SideBar';
 import Home from '../Home';
 import AccountsList from '../Accounts/Pages/List';
 import AccountCreate from '../Accounts/Pages/Create';
+import BudgetsList from '../Budgets/Pages/List';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
 
@@ -28,6 +29,7 @@ export const App = () => (
               <Route exact path="/" component={Home} />
               <Route exact path="/accounts" component={AccountsList} />
               <Route path="/accounts/new" component={AccountCreate} />
+              <Route exact path="/budgets" component={BudgetsList} />
               <Route path="/sign_in" component={SignIn} />
               <Route path="/sign_up" component={SignUp} />
             </main>

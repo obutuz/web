@@ -28,6 +28,10 @@ export const SideBar = ({
       <Icon name="university" />
       Accounts
     </Menu.Item>
+    <Menu.Item name="budgets" as={Link} to="/budgets">
+      <Icon name="inbox" />
+      Budgets
+    </Menu.Item>
   </Sidebar>
 );
 
