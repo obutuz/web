@@ -2,6 +2,9 @@ import {
   FETCH_ACCOUNTS_REQUEST,
   FETCH_ACCOUNTS_SUCCESS,
   FETCH_ACCOUNTS_FAILURE,
+  FETCH_ACCOUNT_REQUEST,
+  FETCH_ACCOUNT_SUCCESS,
+  FETCH_ACCOUNT_FAILURE,
   CREATE_ACCOUNT_REQUEST,
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_FAILURE,
@@ -9,7 +12,12 @@ import {
 
 const initialState = {
   accountsList: [],
-  activeAccount: null,
+  activeAccount: {
+    id: '',
+    name: '',
+    description: '',
+    category: '',
+  },
   isFetching: false,
   success: false,
   message: null,
@@ -37,6 +45,30 @@ const accounts = (state = initialState, { type, ...payload }) => {
       return {
         ...state,
         accountsList: [],
+        isFetching: false,
+        success: false,
+        message: payload.message,
+      };
+    case FETCH_ACCOUNT_REQUEST:
+      return {
+        ...state,
+        activeAccount: initialState.activeAccount,
+        isFetching: true,
+        success: false,
+        message: null,
+      };
+    case FETCH_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        activeAccount: payload.account,
+        isFetching: false,
+        success: true,
+        message: null,
+      };
+    case FETCH_ACCOUNT_FAILURE:
+      return {
+        ...state,
+        activeAccount: initialState.activeAccount,
         isFetching: false,
         success: false,
         message: payload.message,
