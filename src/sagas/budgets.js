@@ -17,19 +17,21 @@ const normalizeBudgets = (collection) => {
 };
 
 function* fetchBudgets() {
-  const { resolve, reject } = yield take(FETCH_BUDGETS_REQUEST);
-  const { response, error } = yield call(api.fetchBudgets, localStorage.getItem('authToken'));
+  while (true) {
+    const { resolve, reject } = yield take(FETCH_BUDGETS_REQUEST);
+    const { response, error } = yield call(api.fetchBudgets, localStorage.getItem('authToken'));
 
-  if (response && !error) {
-    resolve();
-    let normalizedBudgets = [];
-    if (Object.keys(response.body).length > 0) {
-      normalizedBudgets = normalizeBudgets(response.body.budget);
+    if (response && !error) {
+      resolve();
+      let normalizedBudgets = [];
+      if (Object.keys(response.body).length > 0) {
+        normalizedBudgets = normalizeBudgets(response.body.budget);
+      }
+      yield put(fetchBudgetsSuccess(normalizedBudgets));
+    } else {
+      reject();
+      yield put(fetchBudgetsFailure(error));
     }
-    yield put(fetchBudgetsSuccess(normalizedBudgets));
-  } else {
-    reject();
-    yield put(fetchBudgetsFailure(error));
   }
 }
 

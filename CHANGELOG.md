@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Fix the way we're passing auth tokens when signing out users. ([#26](https://github.com/obudget/ui/pull/26))
+- Force all saga functions to listen to actions more than once. [#42](https://github.com/obudget/ui/pull/42)
 
 ## 0.1.0 - 2017-10-14
 
