@@ -2,6 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
 } from 'react-router-dom';
 import { Sidebar, Segment } from 'semantic-ui-react';
 
@@ -10,6 +11,7 @@ import SideBar from '../SideBar';
 import Home from '../Home';
 import AccountsList from '../Accounts/Pages/List';
 import AccountCreate from '../Accounts/Pages/Create';
+import AccountDetail from '../Accounts/Pages/Detail';
 import BudgetsList from '../Budgets/Pages/List';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
@@ -27,8 +29,11 @@ export const App = () => (
           <Sidebar.Pusher>
             <main className="app-content">
               <Route exact path="/" component={Home} />
-              <Route exact path="/accounts" component={AccountsList} />
-              <Route path="/accounts/new" component={AccountCreate} />
+              <Switch>
+                <Route exact path="/accounts" component={AccountsList} />
+                <Route exact path="/accounts/new" component={AccountCreate} />
+                <Route exact path="/accounts/:id" component={AccountDetail} />
+              </Switch>
               <Route exact path="/budgets" component={BudgetsList} />
               <Route path="/sign_in" component={SignIn} />
               <Route path="/sign_up" component={SignUp} />
