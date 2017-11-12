@@ -1,0 +1,36 @@
+import { call, put, take } from 'redux-saga/effects';
+
+import { api } from '../services';
+
+import {
+  FETCH_BUDGETS_REQUEST,
+  fetchBudgetsSuccess,
+  fetchBudgetsFailure,
+} from '../actions/budgets';
+
+const normalizeBudgets = (collection) => {
+  return Object.entries(collection).map(budgets => ({
+    id: budgets[1].id,
+    name: budgets[1].attributes.name,
+    description: budgets[1].attributes.description,
+  }));
+};
+
+function* fetchBudgets() {
+  const { resolve, reject } = yield take(FETCH_BUDGETS_REQUEST);
+  const { response, error } = yield call(api.fetchBudgets, localStorage.getItem('authToken'));
+
+  if (response && !error) {
+    resolve();
+    let normalizedBudgets = [];
+    if (Object.keys(response.body).length > 0) {
+      normalizedBudgets = normalizeBudgets(response.body.budget);
+    }
+    yield put(fetchBudgetsSuccess(normalizedBudgets));
+  } else {
+    reject();
+    yield put(fetchBudgetsFailure(error));
+  }
+}
+
+export default fetchBudgets;
