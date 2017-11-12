@@ -6,6 +6,9 @@ import {
   FETCH_ACCOUNTS_REQUEST,
   fetchAccountsSuccess,
   fetchAccountsFailure,
+  FETCH_ACCOUNT_REQUEST,
+  fetchAccountSuccess,
+  fetchAccountFailure,
   CREATE_ACCOUNT_REQUEST,
   createAccountSuccess,
   createAccountFailure,
@@ -34,6 +37,23 @@ export function* fetchAccounts() {
   } else {
     reject();
     yield put(fetchAccountsFailure(error));
+  }
+}
+
+export function* fetchAccount() {
+  const { resolve, reject, id } = yield take(FETCH_ACCOUNT_REQUEST);
+  const { response, error } = yield call(api.fetchAccount, id, localStorage.getItem('authToken'));
+
+  if (response && !error) {
+    resolve();
+    let normalizedAccounts = [];
+    if (Object.keys(response.body).length > 0) {
+      normalizedAccounts = normalizeAccounts(response.body.account);
+    }
+    yield put(fetchAccountSuccess(normalizedAccounts[0]));
+  } else {
+    reject();
+    yield put(fetchAccountFailure(error));
   }
 }
 
