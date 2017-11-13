@@ -29,6 +29,12 @@ const accountTypes = [
 export const AccountForm = ({ handleSubmit, onSubmit }) => (
   <Container>
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <Field
+        id="account_id"
+        name="account_id"
+        component="input"
+        type="hidden"
+      />
       <Form.Field>
         <label htmlFor="account_name">Name</label>
         <Field
@@ -68,4 +74,4 @@ AccountForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default reduxForm({ form: 'accountForm' })(AccountForm);
+export default reduxForm({ form: 'accountForm', enableReinitialize: true })(AccountForm);
