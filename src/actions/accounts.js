@@ -7,6 +7,9 @@ export const FETCH_ACCOUNT_FAILURE = 'FETCH_ACCOUNT_FAILURE';
 export const CREATE_ACCOUNT_REQUEST = 'CREATE_ACCOUNT_REQUEST';
 export const CREATE_ACCOUNT_SUCCESS = 'CREATE_ACCOUNT_SUCCESS';
 export const CREATE_ACCOUNT_FAILURE = 'CREATE_ACCOUNT_FAILURE';
+export const UPDATE_ACCOUNT_REQUEST = 'UPDATE_ACCOUNT_REQUEST';
+export const UPDATE_ACCOUNT_SUCCESS = 'UPDATE_ACCOUNT_SUCCESS';
+export const UPDATE_ACCOUNT_FAILURE = 'UPDATE_ACCOUNT_FAILURE';
 
 export const fetchAccountsRequest = (resolve, reject) => ({
   type: FETCH_ACCOUNTS_REQUEST,
@@ -55,5 +58,22 @@ export const createAccountSuccess = account => ({
 
 export const createAccountFailure = error => ({
   type: CREATE_ACCOUNT_FAILURE,
+  message: error.message,
+});
+
+export const updateAccountRequest = (values, resolve, reject) => ({
+  type: UPDATE_ACCOUNT_REQUEST,
+  values,
+  resolve,
+  reject,
+});
+
+export const updateAccountSuccess = account => ({
+  type: UPDATE_ACCOUNT_SUCCESS,
+  account,
+});
+
+export const updateAccountFailure = error => ({
+  type: UPDATE_ACCOUNT_FAILURE,
   message: error.message,
 });
