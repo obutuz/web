@@ -56,6 +56,9 @@ function callApi(endpoint, method = 'get', headers = {}, body = {}) {
 export const fetchAccounts = authToken => callApi('accounts', 'get', { Authorization: authToken });
 export const fetchAccount = (id, authToken) => callApi(`accounts/${id}`, 'get', { Authorization: authToken });
 export const createAccount = (name, description, category, authToken) => callApi('accounts', 'post', { Authorization: authToken }, { name, description, category });
+export const updateAccount = (id, name, description, category, authToken) => {
+  return callApi(`accounts/${id}`, 'put', { Authorization: authToken }, { name, description, category });
+};
 
 export const fetchBudgets = authToken => callApi('budgets', 'get', { Authorization: authToken });
 

@@ -12,6 +12,9 @@ import {
   CREATE_ACCOUNT_REQUEST,
   createAccountSuccess,
   createAccountFailure,
+  UPDATE_ACCOUNT_REQUEST,
+  updateAccountSuccess,
+  updateAccountFailure,
 } from '../actions/accounts';
 
 const normalizeAccounts = (collection) => {
@@ -82,6 +85,32 @@ export function* createAccount() {
     } else {
       reject();
       yield put(createAccountFailure(error));
+    }
+  }
+}
+
+export function* updateAccount() {
+  while (true) {
+    const { values, resolve, reject } = yield take(UPDATE_ACCOUNT_REQUEST);
+    const { response, error } = yield call(
+      api.updateAccount,
+      values.account_id,
+      values.account_name,
+      values.account_description,
+      values.account_category,
+      localStorage.getItem('authToken'),
+    );
+
+    if (response && !error) {
+      resolve();
+      let normalizedAccounts = [];
+      if (Object.keys(response.body).length > 0) {
+        normalizedAccounts = normalizeAccounts(response.body.account);
+      }
+      yield put(updateAccountSuccess(normalizedAccounts[0]));
+    } else {
+      reject();
+      yield put(updateAccountFailure(error));
     }
   }
 }
