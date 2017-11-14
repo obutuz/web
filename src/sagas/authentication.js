@@ -52,7 +52,8 @@ export function* signUpUser() {
     const { response, error } = yield call(api.signUpUser, values.email, values.password);
     if (response && !error) {
       resolve();
-      localStorage.setItem('authToken', response.access_token);
+      const authorizationHeader = response.headers.get('Authorization');
+      localStorage.setItem('authToken', authorizationHeader);
       yield put(signUpSuccess(response));
       yield put(push('/'));
     } else {
