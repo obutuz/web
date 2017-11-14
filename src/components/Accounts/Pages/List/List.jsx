@@ -15,8 +15,7 @@ export const List = ({ accounts, onAccountDeleteClick }) => (
           <Table.HeaderCell>Name</Table.HeaderCell>
           <Table.HeaderCell>Description</Table.HeaderCell>
           <Table.HeaderCell>Category</Table.HeaderCell>
-          <Table.HeaderCell />
-          <Table.HeaderCell />
+          <Table.HeaderCell>Actions</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -29,8 +28,6 @@ export const List = ({ accounts, onAccountDeleteClick }) => (
               <Table.Cell>{account.category}</Table.Cell>
               <Table.Cell>
                 <Button as={Link} to={`/accounts/${account.id}/edit`}>Edit</Button>
-              </Table.Cell>
-              <Table.Cell>
                 <Button onClick={() => onAccountDeleteClick(account.id)} color="red">
                   Delete
                 </Button>
@@ -40,6 +37,7 @@ export const List = ({ accounts, onAccountDeleteClick }) => (
         })}
       </Table.Body>
     </Table>
+    <Button as={Link} to="/accounts/new" color="green">Create Account</Button>
   </Container>
 );
 
