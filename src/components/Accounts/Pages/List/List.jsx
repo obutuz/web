@@ -31,7 +31,9 @@ export const List = ({ accounts, onAccountDeleteClick }) => (
                 <Button as={Link} to={`/accounts/${account.id}/edit`}>Edit</Button>
               </Table.Cell>
               <Table.Cell>
-                <Button onClick={onAccountDeleteClick} color="red">Delete</Button>
+                <Button onClick={() => onAccountDeleteClick(account.id)} color="red">
+                  Delete
+                </Button>
               </Table.Cell>
             </Table.Row>
           );
