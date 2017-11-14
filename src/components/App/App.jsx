@@ -29,7 +29,7 @@ export const App = () => (
         <SideBar />
         <Sidebar.Pusher>
           <main className="app-content">
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={withAuthentication(Home)} />
             <Switch>
               <Route exact path="/accounts" component={withAuthentication(AccountsList)} />
               <Route exact path="/accounts/new" component={withAuthentication(AccountCreate)} />
