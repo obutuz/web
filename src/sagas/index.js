@@ -1,7 +1,7 @@
 import { fork } from 'redux-saga/effects';
 
 import { fetchAccounts, fetchAccount, createAccount, updateAccount } from './accounts';
-import { signInUser, signOutUser, signUpUser } from './authentication';
+import { signInUser, signOutUser, signUpUser, requireAuthentication } from './authentication';
 import fetchBudgets from './budgets';
 
 export default function* rootSaga() {
@@ -13,4 +13,5 @@ export default function* rootSaga() {
   yield fork(signInUser);
   yield fork(signOutUser);
   yield fork(signUpUser);
+  yield fork(requireAuthentication);
 }

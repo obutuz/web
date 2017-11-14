@@ -7,11 +7,14 @@ import {
   SIGN_IN_REQUEST,
   SIGN_OUT_REQUEST,
   SIGN_UP_REQUEST,
+  USER_AUTHENTICATION_CHECK_REQUEST,
   signInSuccess,
   signInFailure,
   signOutSuccess,
   signUpSuccess,
   signUpFailure,
+  userAuthenticationCheckSuccess,
+  userAuthenticationCheckFailure,
 } from '../actions/authentication';
 
 export function* signInUser() {
@@ -55,6 +58,20 @@ export function* signUpUser() {
     } else {
       reject();
       yield put(signUpFailure(error));
+    }
+  }
+}
+
+export function* requireAuthentication() {
+  while (true) {
+    const { isAuthenticated, resolve, reject } = yield take(USER_AUTHENTICATION_CHECK_REQUEST);
+    if (isAuthenticated) {
+      resolve();
+      yield put(userAuthenticationCheckSuccess());
+    } else {
+      reject();
+      yield put(userAuthenticationCheckFailure());
+      yield put(push('/sign_in'));
     }
   }
 }
