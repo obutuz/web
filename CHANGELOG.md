@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add page for user registration. [#32](https://github.com/obudget/ui/pull/32)
 - Add page for creating new budget accounts. [#36](https://github.com/obudget/ui/pull/36)
 - Add page for viewing budget account information. [#40](https://github.com/obudget/ui/pull/40)
+- Add page for updating budget accounts. [#43](https://github.com/obudget/ui/pull/43)
+- Require users to be authenticated to view all pages except Sign In/Up. [#44](https://github.com/obudget/ui/pull/44)
 
 ### Changed
 
@@ -27,6 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fix the way we're passing auth tokens when signing out users. ([#26](https://github.com/obudget/ui/pull/26))
 - Force all saga functions to listen to actions more than once. [#42](https://github.com/obudget/ui/pull/42)
+- Fix pages not redirecting properly. [#44](https://github.com/obudget/ui/pull/44)
 
 ## 0.1.0 - 2017-10-14
 
