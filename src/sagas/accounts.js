@@ -1,4 +1,5 @@
 import { call, put, take } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 
 import { api } from '../services';
 
@@ -82,6 +83,7 @@ export function* createAccount() {
         normalizedAccounts = normalizeAccounts(response.body.account);
       }
       yield put(createAccountSuccess(normalizedAccounts[0]));
+      yield put(push('/accounts'));
     } else {
       reject();
       yield put(createAccountFailure(error));
@@ -108,6 +110,7 @@ export function* updateAccount() {
         normalizedAccounts = normalizeAccounts(response.body.account);
       }
       yield put(updateAccountSuccess(normalizedAccounts[0]));
+      yield put(push(`/accounts/${values.account_id}`));
     } else {
       reject();
       yield put(updateAccountFailure(error));
