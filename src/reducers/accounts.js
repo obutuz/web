@@ -8,6 +8,9 @@ import {
   CREATE_ACCOUNT_REQUEST,
   CREATE_ACCOUNT_SUCCESS,
   CREATE_ACCOUNT_FAILURE,
+  UPDATE_ACCOUNT_REQUEST,
+  UPDATE_ACCOUNT_SUCCESS,
+  UPDATE_ACCOUNT_FAILURE,
 } from '../actions/accounts';
 
 const initialState = {
@@ -93,6 +96,28 @@ const accounts = (state = initialState, { type, ...payload }) => {
       return {
         ...state,
         activeAccount: null,
+        isFetching: false,
+        success: false,
+        message: payload.message,
+      };
+    case UPDATE_ACCOUNT_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+        success: false,
+        message: null,
+      };
+    case UPDATE_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        activeAccount: payload.account,
+        isFetching: false,
+        success: true,
+        message: null,
+      };
+    case UPDATE_ACCOUNT_FAILURE:
+      return {
+        ...state,
         isFetching: false,
         success: false,
         message: payload.message,

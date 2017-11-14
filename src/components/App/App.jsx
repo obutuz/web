@@ -12,6 +12,7 @@ import Home from '../Home';
 import AccountsList from '../Accounts/Pages/List';
 import AccountCreate from '../Accounts/Pages/Create';
 import AccountDetail from '../Accounts/Pages/Detail';
+import AccountUpdate from '../Accounts/Pages/Update';
 import BudgetsList from '../Budgets/Pages/List';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
@@ -32,6 +33,7 @@ export const App = () => (
               <Switch>
                 <Route exact path="/accounts" component={AccountsList} />
                 <Route exact path="/accounts/new" component={AccountCreate} />
+                <Route exact path="/accounts/:id/edit" component={AccountUpdate} />
                 <Route exact path="/accounts/:id" component={AccountDetail} />
               </Switch>
               <Route exact path="/budgets" component={BudgetsList} />
