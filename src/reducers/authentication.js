@@ -101,7 +101,6 @@ const authentication = (state = initialState, { type, ...payload }) => {
     case USER_AUTHENTICATION_CHECK_REQUEST:
       return {
         ...state,
-        isAuthenticated: payload.isAuthenticated,
         isFetching: true,
         success: false,
         message: null,
@@ -109,7 +108,6 @@ const authentication = (state = initialState, { type, ...payload }) => {
     case USER_AUTHENTICATION_CHECK_SUCCESS:
       return {
         ...state,
-        isAuthenticated: payload.isAuthenticated,
         isFetching: false,
         success: true,
         message: null,
@@ -117,7 +115,6 @@ const authentication = (state = initialState, { type, ...payload }) => {
     case USER_AUTHENTICATION_CHECK_FAILURE:
       return {
         ...state,
-        isAuthenticated: payload.isAuthenticated,
         isFetching: false,
         success: true,
         message: null,
