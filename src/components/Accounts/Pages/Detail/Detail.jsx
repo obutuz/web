@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, Table } from 'semantic-ui-react';
+import { Button, Container, Table } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { fetchAccountRequest } from '../../../../actions/accounts';
 
 export const Detail = ({ account }) => (
   <Container>
+    <Button as={Link} to="/accounts">Back to Accounts</Button>
     <Table definition>
       <Table.Body>
         <Table.Row>

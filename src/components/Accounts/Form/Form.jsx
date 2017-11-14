@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { Button, Container, Form } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import TextField from '../../Form/TextField';
 import TextArea from '../../Form/TextArea';
@@ -28,6 +29,7 @@ const accountTypes = [
 
 export const AccountForm = ({ handleSubmit, onSubmit }) => (
   <Container>
+    <Button as={Link} to="/accounts">Back to Accounts</Button>
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Field
         id="account_id"
