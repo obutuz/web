@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -21,30 +20,28 @@ import '../../semantic-ui/dist/semantic.min.css';
 import './styles.css';
 
 export const App = () => (
-  <Router>
+  <div>
     <div>
-      <div>
-        <Sidebar.Pushable as={Segment}>
-          <Header />
-          <SideBar />
-          <Sidebar.Pusher>
-            <main className="app-content">
-              <Route exact path="/" component={Home} />
-              <Switch>
-                <Route exact path="/accounts" component={AccountsList} />
-                <Route exact path="/accounts/new" component={AccountCreate} />
-                <Route exact path="/accounts/:id/edit" component={AccountUpdate} />
-                <Route exact path="/accounts/:id" component={AccountDetail} />
-              </Switch>
-              <Route exact path="/budgets" component={BudgetsList} />
-              <Route path="/sign_in" component={SignIn} />
-              <Route path="/sign_up" component={SignUp} />
-            </main>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </div>
+      <Sidebar.Pushable as={Segment}>
+        <Header />
+        <SideBar />
+        <Sidebar.Pusher>
+          <main className="app-content">
+            <Route exact path="/" component={Home} />
+            <Switch>
+              <Route exact path="/accounts" component={AccountsList} />
+              <Route exact path="/accounts/new" component={AccountCreate} />
+              <Route exact path="/accounts/:id/edit" component={AccountUpdate} />
+              <Route exact path="/accounts/:id" component={AccountDetail} />
+            </Switch>
+            <Route exact path="/budgets" component={BudgetsList} />
+            <Route path="/sign_in" component={SignIn} />
+            <Route path="/sign_up" component={SignUp} />
+          </main>
+        </Sidebar.Pusher>
+      </Sidebar.Pushable>
     </div>
-  </Router>
+  </div>
 );
 
 export default App;
