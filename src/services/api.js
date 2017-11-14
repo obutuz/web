@@ -59,6 +59,7 @@ export const createAccount = (name, description, category, authToken) => callApi
 export const updateAccount = (id, name, description, category, authToken) => {
   return callApi(`accounts/${id}`, 'put', { Authorization: authToken }, { name, description, category });
 };
+export const deleteAccount = (id, authToken) => callApi(`accounts/${id}`, 'delete', { Authorization: authToken });
 
 export const fetchBudgets = authToken => callApi('budgets', 'get', { Authorization: authToken });
 

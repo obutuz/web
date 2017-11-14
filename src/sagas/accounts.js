@@ -5,6 +5,7 @@ import { api } from '../services';
 
 import {
   FETCH_ACCOUNTS_REQUEST,
+  fetchAccountsRequest,
   fetchAccountsSuccess,
   fetchAccountsFailure,
   FETCH_ACCOUNT_REQUEST,
@@ -16,6 +17,9 @@ import {
   UPDATE_ACCOUNT_REQUEST,
   updateAccountSuccess,
   updateAccountFailure,
+  DELETE_ACCOUNT_REQUEST,
+  deleteAccountSuccess,
+  deleteAccountFailure,
 } from '../actions/accounts';
 
 const normalizeAccounts = (collection) => {
@@ -114,6 +118,23 @@ export function* updateAccount() {
     } else {
       reject();
       yield put(updateAccountFailure(error));
+    }
+  }
+}
+
+export function* deleteAccount() {
+  while (true) {
+    const { id, resolve, reject } = yield take(DELETE_ACCOUNT_REQUEST);
+    const { response, error } = yield call(api.deleteAccount, id, localStorage.getItem('authToken'));
+    window.hello = response;
+
+    if (response === undefined) {
+      resolve();
+      yield put(deleteAccountSuccess());
+      yield put(fetchAccountsRequest(resolve, reject));
+    } else {
+      reject();
+      yield put(deleteAccountFailure(error));
     }
   }
 }
