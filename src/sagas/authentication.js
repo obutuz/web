@@ -39,6 +39,7 @@ export function* signOutUser() {
     resolve();
     localStorage.removeItem('authToken');
     yield put(signOutSuccess());
+    yield put(push('/'));
   }
 }
 
@@ -50,6 +51,7 @@ export function* signUpUser() {
       resolve();
       localStorage.setItem('authToken', response.access_token);
       yield put(signUpSuccess(response));
+      yield put(push('/'));
     } else {
       reject();
       yield put(signUpFailure(error));
