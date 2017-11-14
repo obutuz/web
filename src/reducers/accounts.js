@@ -11,6 +11,9 @@ import {
   UPDATE_ACCOUNT_REQUEST,
   UPDATE_ACCOUNT_SUCCESS,
   UPDATE_ACCOUNT_FAILURE,
+  DELETE_ACCOUNT_REQUEST,
+  DELETE_ACCOUNT_SUCCESS,
+  DELETE_ACCOUNT_FAILURE,
 } from '../actions/accounts';
 
 const initialState = {
@@ -116,6 +119,28 @@ const accounts = (state = initialState, { type, ...payload }) => {
         message: null,
       };
     case UPDATE_ACCOUNT_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        success: false,
+        message: payload.message,
+      };
+    case DELETE_ACCOUNT_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+        success: false,
+        message: null,
+      };
+    case DELETE_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        activeAccount: null,
+        isFetching: false,
+        success: true,
+        message: null,
+      };
+    case DELETE_ACCOUNT_FAILURE:
       return {
         ...state,
         isFetching: false,
