@@ -8,6 +8,9 @@ import {
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
+  USER_AUTHENTICATION_CHECK_REQUEST,
+  USER_AUTHENTICATION_CHECK_SUCCESS,
+  USER_AUTHENTICATION_CHECK_FAILURE,
 } from '../actions/authentication';
 
 const initialState = {
@@ -94,6 +97,30 @@ const authentication = (state = initialState, { type, ...payload }) => {
         isFetching: false,
         success: false,
         message: payload.message,
+      };
+    case USER_AUTHENTICATION_CHECK_REQUEST:
+      return {
+        ...state,
+        isAuthenticated: payload.isAuthenticated,
+        isFetching: true,
+        success: false,
+        message: null,
+      };
+    case USER_AUTHENTICATION_CHECK_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: payload.isAuthenticated,
+        isFetching: false,
+        success: true,
+        message: null,
+      };
+    case USER_AUTHENTICATION_CHECK_FAILURE:
+      return {
+        ...state,
+        isAuthenticated: payload.isAuthenticated,
+        isFetching: false,
+        success: true,
+        message: null,
       };
     default:
       return state;
