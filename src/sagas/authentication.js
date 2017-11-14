@@ -1,4 +1,5 @@
 import { call, put, take } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 
 import { api } from '../services';
 
@@ -22,6 +23,7 @@ export function* signInUser() {
       const authorizationHeader = response.headers.get('Authorization');
       localStorage.setItem('authToken', authorizationHeader);
       yield put(signInSuccess(authorizationHeader));
+      yield put(push('/'));
     } else {
       reject();
       yield put(signInFailure(error));
