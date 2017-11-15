@@ -6,6 +6,9 @@ import {
   FETCH_BUDGETS_REQUEST,
   fetchBudgetsSuccess,
   fetchBudgetsFailure,
+  FETCH_BUDGET_REQUEST,
+  fetchBudgetSuccess,
+  fetchBudgetFailure,
 } from '../actions/budgets';
 
 const normalizeBudgets = (collection) => {
@@ -16,7 +19,7 @@ const normalizeBudgets = (collection) => {
   }));
 };
 
-function* fetchBudgets() {
+export function* fetchBudgets() {
   while (true) {
     const { resolve, reject } = yield take(FETCH_BUDGETS_REQUEST);
     const { response, error } = yield call(api.fetchBudgets, localStorage.getItem('authToken'));
@@ -35,4 +38,21 @@ function* fetchBudgets() {
   }
 }
 
-export default fetchBudgets;
+export function* fetchBudget() {
+  while (true) {
+    const { id, resolve, reject } = yield take(FETCH_BUDGET_REQUEST);
+    const { response, error } = yield call(api.fetchBudget, id, localStorage.getItem('authToken'));
+
+    if (response && !error) {
+      resolve();
+      let normalizedBudgets = [];
+      if (Object.keys(response.body).length > 0) {
+        normalizedBudgets = normalizeBudgets(response.body.budget);
+      }
+      yield put(fetchBudgetSuccess(normalizedBudgets[0]));
+    } else {
+      reject();
+      yield put(fetchBudgetFailure(error));
+    }
+  }
+}
