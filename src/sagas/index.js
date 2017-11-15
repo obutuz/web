@@ -14,6 +14,7 @@ import {
   createBudget,
   updateBudget,
   deleteBudget,
+  switchBudget,
 } from './budgets';
 
 export default function* rootSaga() {
@@ -27,6 +28,7 @@ export default function* rootSaga() {
   yield fork(createBudget);
   yield fork(updateBudget);
   yield fork(deleteBudget);
+  yield fork(switchBudget);
   yield fork(signInUser);
   yield fork(signOutUser);
   yield fork(signUpUser);

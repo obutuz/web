@@ -20,6 +20,9 @@ import {
   DELETE_BUDGET_REQUEST,
   deleteBudgetSuccess,
   deleteBudgetFailure,
+  SWITCH_BUDGET_REQUEST,
+  switchBudgetSuccess,
+  switchBudgetFailure,
 } from '../actions/budgets';
 
 const normalizeBudgets = (collection) => {
@@ -131,6 +134,22 @@ export function* deleteBudget() {
     } else {
       reject();
       yield put(deleteBudgetFailure(error));
+    }
+  }
+}
+
+export function* switchBudget() {
+  while (true) {
+    const { id, resolve, reject } = yield take(SWITCH_BUDGET_REQUEST);
+    const { response, error } = yield call(api.switchBudget, id, localStorage.getItem('authToken'));
+
+    if (response && !error) {
+      resolve();
+      yield put(switchBudgetSuccess());
+      yield put(fetchBudgetsRequest(resolve, reject));
+    } else {
+      reject();
+      yield put(switchBudgetFailure(error));
     }
   }
 }
