@@ -1,4 +1,5 @@
 import { call, put, take } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 
 import { api } from '../services';
 
@@ -9,6 +10,9 @@ import {
   FETCH_BUDGET_REQUEST,
   fetchBudgetSuccess,
   fetchBudgetFailure,
+  CREATE_BUDGET_REQUEST,
+  createBudgetSuccess,
+  createBudgetFailure,
 } from '../actions/budgets';
 
 const normalizeBudgets = (collection) => {
@@ -53,6 +57,31 @@ export function* fetchBudget() {
     } else {
       reject();
       yield put(fetchBudgetFailure(error));
+    }
+  }
+}
+
+export function* createBudget() {
+  while (true) {
+    const { values, resolve, reject } = yield take(CREATE_BUDGET_REQUEST);
+    const { response, error } = yield call(
+      api.createBudget,
+      values.budget_name,
+      values.budget_description,
+      localStorage.getItem('authToken'),
+    );
+
+    if (response && !error) {
+      resolve();
+      let normalizedBudgets = [];
+      if (Object.keys(response.body).length > 0) {
+        normalizedBudgets = normalizeBudgets(response.body.budget);
+      }
+      yield put(createBudgetSuccess(normalizedBudgets[0]));
+      yield put(push('/budgets'));
+    } else {
+      reject();
+      yield put(createBudgetFailure(error));
     }
   }
 }
