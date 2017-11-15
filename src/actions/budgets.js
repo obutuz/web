@@ -7,6 +7,9 @@ export const FETCH_BUDGET_FAILURE = 'FETCH_BUDGET_FAILURE';
 export const CREATE_BUDGET_REQUEST = 'CREATE_BUDGET_REQUEST';
 export const CREATE_BUDGET_SUCCESS = 'CREATE_BUDGET_SUCCESS';
 export const CREATE_BUDGET_FAILURE = 'CREATE_BUDGET_FAILURE';
+export const UPDATE_BUDGET_REQUEST = 'UPDATE_BUDGET_REQUEST';
+export const UPDATE_BUDGET_SUCCESS = 'UPDATE_BUDGET_SUCCESS';
+export const UPDATE_BUDGET_FAILURE = 'UPDATE_BUDGET_FAILURE';
 
 export const fetchBudgetsRequest = (resolve, reject) => ({
   type: FETCH_BUDGETS_REQUEST,
@@ -55,5 +58,22 @@ export const createBudgetSuccess = budget => ({
 
 export const createBudgetFailure = error => ({
   type: CREATE_BUDGET_FAILURE,
+  message: error.message,
+});
+
+export const updateBudgetRequest = (values, resolve, reject) => ({
+  type: UPDATE_BUDGET_REQUEST,
+  values,
+  resolve,
+  reject,
+});
+
+export const updateBudgetSuccess = budget => ({
+  type: UPDATE_BUDGET_SUCCESS,
+  budget,
+});
+
+export const updateBudgetFailure = error => ({
+  type: UPDATE_BUDGET_FAILURE,
   message: error.message,
 });

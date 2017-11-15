@@ -8,6 +8,9 @@ import {
   CREATE_BUDGET_REQUEST,
   CREATE_BUDGET_SUCCESS,
   CREATE_BUDGET_FAILURE,
+  UPDATE_BUDGET_REQUEST,
+  UPDATE_BUDGET_SUCCESS,
+  UPDATE_BUDGET_FAILURE,
 } from '../actions/budgets';
 
 const initialState = {
@@ -92,6 +95,28 @@ const budgets = (state = initialState, { type, ...payload }) => {
       return {
         ...state,
         activeBudget: null,
+        isFetching: false,
+        success: false,
+        message: payload.message,
+      };
+    case UPDATE_BUDGET_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+        success: false,
+        message: null,
+      };
+    case UPDATE_BUDGET_SUCCESS:
+      return {
+        ...state,
+        activeBudget: payload.budget,
+        isFetching: false,
+        success: true,
+        message: null,
+      };
+    case UPDATE_BUDGET_FAILURE:
+      return {
+        ...state,
         isFetching: false,
         success: false,
         message: payload.message,

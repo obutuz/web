@@ -64,6 +64,9 @@ export const deleteAccount = (id, authToken) => callApi(`accounts/${id}`, 'delet
 export const fetchBudgets = authToken => callApi('budgets', 'get', { Authorization: authToken });
 export const fetchBudget = (id, authToken) => callApi(`budgets/${id}`, 'get', { Authorization: authToken });
 export const createBudget = (name, description, authToken) => callApi('budgets', 'post', { Authorization: authToken }, { name, description });
+export const updateBudget = (id, name, description, authToken) => {
+  return callApi(`budgets/${id}`, 'put', { Authorization: authToken }, { name, description });
+};
 
 export const signInUser = (email, password) => callApi('auth/token', 'post', {}, { email, password });
 export const signOutUser = authToken => callApi('auth/token', 'delete', { Authorization: `Bearer ${authToken}` });
