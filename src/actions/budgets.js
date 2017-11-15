@@ -13,6 +13,9 @@ export const UPDATE_BUDGET_FAILURE = 'UPDATE_BUDGET_FAILURE';
 export const DELETE_BUDGET_REQUEST = 'DELETE_BUDGET_REQUEST';
 export const DELETE_BUDGET_SUCCESS = 'DELETE_BUDGET_SUCCESS';
 export const DELETE_BUDGET_FAILURE = 'DELETE_BUDGET_FAILURE';
+export const SWITCH_BUDGET_REQUEST = 'SWITCH_BUDGET_REQUEST';
+export const SWITCH_BUDGET_SUCCESS = 'SWITCH_BUDGET_SUCCESS';
+export const SWITCH_BUDGET_FAILURE = 'SWITCH_BUDGET_FAILURE';
 
 export const fetchBudgetsRequest = (resolve, reject) => ({
   type: FETCH_BUDGETS_REQUEST,
@@ -94,5 +97,22 @@ export const deleteBudgetSuccess = () => ({
 
 export const deleteBudgetFailure = error => ({
   type: DELETE_BUDGET_FAILURE,
+  message: error.message,
+});
+
+export const switchBudgetRequest = (id, resolve, reject) => ({
+  type: SWITCH_BUDGET_REQUEST,
+  id,
+  resolve,
+  reject,
+});
+
+export const switchBudgetSuccess = defaultBudgetId => ({
+  type: SWITCH_BUDGET_SUCCESS,
+  defaultBudgetId,
+});
+
+export const switchBudgetFailure = error => ({
+  type: SWITCH_BUDGET_FAILURE,
   message: error.message,
 });
