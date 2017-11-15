@@ -5,6 +5,7 @@ import { api } from '../services';
 
 import {
   FETCH_BUDGETS_REQUEST,
+  fetchBudgetsRequest,
   fetchBudgetsSuccess,
   fetchBudgetsFailure,
   FETCH_BUDGET_REQUEST,
@@ -16,6 +17,9 @@ import {
   UPDATE_BUDGET_REQUEST,
   updateBudgetSuccess,
   updateBudgetFailure,
+  DELETE_BUDGET_REQUEST,
+  deleteBudgetSuccess,
+  deleteBudgetFailure,
 } from '../actions/budgets';
 
 const normalizeBudgets = (collection) => {
@@ -111,6 +115,22 @@ export function* updateBudget() {
     } else {
       reject();
       yield put(updateBudgetFailure(error));
+    }
+  }
+}
+
+export function* deleteBudget() {
+  while (true) {
+    const { id, resolve, reject } = yield take(DELETE_BUDGET_REQUEST);
+    const { response, error } = yield call(api.deleteBudget, id, localStorage.getItem('authToken'));
+
+    if (response === undefined) {
+      resolve();
+      yield put(deleteBudgetSuccess());
+      yield put(fetchBudgetsRequest(resolve, reject));
+    } else {
+      reject();
+      yield put(deleteBudgetFailure(error));
     }
   }
 }

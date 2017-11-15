@@ -126,7 +126,6 @@ export function* deleteAccount() {
   while (true) {
     const { id, resolve, reject } = yield take(DELETE_ACCOUNT_REQUEST);
     const { response, error } = yield call(api.deleteAccount, id, localStorage.getItem('authToken'));
-    window.hello = response;
 
     if (response === undefined) {
       resolve();
