@@ -13,6 +13,9 @@ import {
   CREATE_BUDGET_REQUEST,
   createBudgetSuccess,
   createBudgetFailure,
+  UPDATE_BUDGET_REQUEST,
+  updateBudgetSuccess,
+  updateBudgetFailure,
 } from '../actions/budgets';
 
 const normalizeBudgets = (collection) => {
@@ -82,6 +85,32 @@ export function* createBudget() {
     } else {
       reject();
       yield put(createBudgetFailure(error));
+    }
+  }
+}
+
+export function* updateBudget() {
+  while (true) {
+    const { values, resolve, reject } = yield take(UPDATE_BUDGET_REQUEST);
+    const { response, error } = yield call(
+      api.updateBudget,
+      values.budget_id,
+      values.budget_name,
+      values.budget_description,
+      localStorage.getItem('authToken'),
+    );
+
+    if (response && !error) {
+      resolve();
+      let normalizedBudgets = [];
+      if (Object.keys(response.body).length > 0) {
+        normalizedBudgets = normalizeBudgets(response.body.budget);
+      }
+      yield put(updateBudgetSuccess(normalizedBudgets[0]));
+      yield put(push(`/budgets/${values.budget_id}`));
+    } else {
+      reject();
+      yield put(updateBudgetFailure(error));
     }
   }
 }
