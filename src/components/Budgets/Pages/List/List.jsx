@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Container, Table } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { fetchBudgetsRequest } from '../../../../actions/budgets';
 
@@ -19,8 +20,8 @@ export const List = ({ budgets }) => (
         {budgets.map((budget) => {
           return (
             <Table.Row key={budget.id}>
-              <Table.Cell>{budget.id}</Table.Cell>
-              <Table.Cell>{budget.name}</Table.Cell>
+              <Table.Cell><Link to={`/budgets/${budget.id}`}>{budget.id}</Link></Table.Cell>
+              <Table.Cell><Link to={`/budgets/${budget.id}`}>{budget.name}</Link></Table.Cell>
               <Table.Cell>{budget.description}</Table.Cell>
             </Table.Row>
           );
