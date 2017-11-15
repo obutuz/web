@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Button, Container, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import { fetchBudgetsRequest } from '../../../../actions/budgets';
+import { fetchBudgetsRequest, deleteBudgetRequest } from '../../../../actions/budgets';
 
-export const List = ({ budgets }) => (
+export const List = ({ budgets, onBudgetDeleteClick }) => (
   <Container>
     <Table celled>
       <Table.Header>
@@ -26,6 +26,9 @@ export const List = ({ budgets }) => (
               <Table.Cell>{budget.description}</Table.Cell>
               <Table.Cell>
                 <Button as={Link} to={`/budgets/${budget.id}/edit`}>Edit</Button>
+                <Button onClick={() => onBudgetDeleteClick(budget.id)} color="red">
+                  Delete
+                </Button>
               </Table.Cell>
             </Table.Row>
           );
@@ -42,19 +45,19 @@ List.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
   }).isRequired).isRequired,
+  onBudgetDeleteClick: PropTypes.func.isRequired,
 };
 
 class BudgetsList extends React.Component {
   componentDidMount() {
-    return new Promise((resolve, reject) => {
-      this.props.dispatch(fetchBudgetsRequest(resolve, reject));
-    });
+    this.props.fetchBudgets();
   }
 
   render() {
     return (
       <List
         budgets={this.props.budgets}
+        onBudgetDeleteClick={this.props.onBudgetDeleteClick}
       />
     );
   }
@@ -66,7 +69,8 @@ BudgetsList.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
   }).isRequired).isRequired,
-  dispatch: PropTypes.func.isRequired,
+  fetchBudgets: PropTypes.func.isRequired,
+  onBudgetDeleteClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -75,4 +79,17 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(BudgetsList);
+const mapDispatchToProps = dispatch => ({
+  fetchBudgets: () => {
+    return new Promise((resolve, reject) => {
+      dispatch(fetchBudgetsRequest(resolve, reject));
+    });
+  },
+  onBudgetDeleteClick: (id) => {
+    return new Promise((resolve, reject) => {
+      dispatch(deleteBudgetRequest(id, resolve, reject));
+    });
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetsList);
