@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add page for viewing budget account information. [#40](https://github.com/obudget/ui/pull/40)
 - Add page for updating budget accounts. [#43](https://github.com/obudget/ui/pull/43)
 - Require users to be authenticated to view all pages except Sign In/Up. [#44](https://github.com/obudget/ui/pull/44)
+- Add page for viewing budget information. [#51](https://github.com/obudget/ui/pull/51)
 
 ### Changed
 
