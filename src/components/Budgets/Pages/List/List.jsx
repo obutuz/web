@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, Table } from 'semantic-ui-react';
+import { Button, Container, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import { fetchBudgetsRequest } from '../../../../actions/budgets';
@@ -28,6 +28,7 @@ export const List = ({ budgets }) => (
         })}
       </Table.Body>
     </Table>
+    <Button as={Link} to="/budgets/new" color="green">Create Budget</Button>
   </Container>
 );
 

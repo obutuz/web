@@ -16,6 +16,7 @@ import AccountDetail from '../Accounts/Pages/Detail';
 import AccountUpdate from '../Accounts/Pages/Update';
 import BudgetsList from '../Budgets/Pages/List';
 import BudgetDetail from '../Budgets/Pages/Detail';
+import BudgetCreate from '../Budgets/Pages/Create';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
 
@@ -39,6 +40,7 @@ export const App = () => (
             </Switch>
             <Switch>
               <Route exact path="/budgets" component={withAuthentication(BudgetsList)} />
+              <Route exact path="/budgets/new" component={withAuthentication(BudgetCreate)} />
               <Route exact path="/budgets/:id" component={withAuthentication(BudgetDetail)} />
             </Switch>
             <Route path="/sign_in" component={SignIn} />
