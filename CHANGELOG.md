@@ -17,10 +17,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add page for creating new budget accounts. [#36](https://github.com/obudget/ui/pull/36)
 - Add page for viewing budget account information. [#40](https://github.com/obudget/ui/pull/40)
 - Add page for updating budget accounts. [#43](https://github.com/obudget/ui/pull/43)
+- Add button for deleting budget accounts. [#47](https://github.com/obudget/ui/pull/47)
 - Require users to be authenticated to view all pages except Sign In/Up. [#44](https://github.com/obudget/ui/pull/44)
 - Add page for viewing budget information. [#51](https://github.com/obudget/ui/pull/51)
 - Add page for creating new budgets. [#52](https://github.com/obudget/ui/pull/52)
 - Add page for updating budget information. [#53](https://github.com/obudget/ui/pull/53)
+- Add button for deleting budgets. [#54](https://github.com/obudget/ui/pull/54)
+- Add button for switching default/active budget. [#55](https://github.com/obudget/ui/pull/55)
 
 ### Changed
 
