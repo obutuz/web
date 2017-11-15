@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Button, Container, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import { fetchBudgetsRequest, deleteBudgetRequest } from '../../../../actions/budgets';
+import { fetchBudgetsRequest, deleteBudgetRequest, switchBudgetRequest } from '../../../../actions/budgets';
 
-export const List = ({ budgets, onBudgetDeleteClick }) => (
+export const List = ({ budgets, onBudgetDeleteClick, onBudgetSwitchClick }) => (
   <Container>
     <Table celled>
       <Table.Header>
@@ -26,6 +26,9 @@ export const List = ({ budgets, onBudgetDeleteClick }) => (
               <Table.Cell>{budget.description}</Table.Cell>
               <Table.Cell>
                 <Button as={Link} to={`/budgets/${budget.id}/edit`}>Edit</Button>
+                <Button onClick={() => onBudgetSwitchClick(budget.id)} color="olive">
+                  Make Active
+                </Button>
                 <Button onClick={() => onBudgetDeleteClick(budget.id)} color="red">
                   Delete
                 </Button>
@@ -46,6 +49,7 @@ List.propTypes = {
     description: PropTypes.string,
   }).isRequired).isRequired,
   onBudgetDeleteClick: PropTypes.func.isRequired,
+  onBudgetSwitchClick: PropTypes.func.isRequired,
 };
 
 class BudgetsList extends React.Component {
@@ -58,6 +62,7 @@ class BudgetsList extends React.Component {
       <List
         budgets={this.props.budgets}
         onBudgetDeleteClick={this.props.onBudgetDeleteClick}
+        onBudgetSwitchClick={this.props.onBudgetSwitchClick}
       />
     );
   }
@@ -71,6 +76,7 @@ BudgetsList.propTypes = {
   }).isRequired).isRequired,
   fetchBudgets: PropTypes.func.isRequired,
   onBudgetDeleteClick: PropTypes.func.isRequired,
+  onBudgetSwitchClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -88,6 +94,11 @@ const mapDispatchToProps = dispatch => ({
   onBudgetDeleteClick: (id) => {
     return new Promise((resolve, reject) => {
       dispatch(deleteBudgetRequest(id, resolve, reject));
+    });
+  },
+  onBudgetSwitchClick: (id) => {
+    return new Promise((resolve, reject) => {
+      dispatch(switchBudgetRequest(id, resolve, reject));
     });
   },
 });
