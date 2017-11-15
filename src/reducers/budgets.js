@@ -14,6 +14,9 @@ import {
   DELETE_BUDGET_REQUEST,
   DELETE_BUDGET_SUCCESS,
   DELETE_BUDGET_FAILURE,
+  SWITCH_BUDGET_REQUEST,
+  SWITCH_BUDGET_SUCCESS,
+  SWITCH_BUDGET_FAILURE,
 } from '../actions/budgets';
 
 const initialState = {
@@ -26,6 +29,7 @@ const initialState = {
   isFetching: false,
   success: false,
   message: null,
+  defaultBudgetId: localStorage.getItem('defaultBudgetId'),
 };
 
 const budgets = (state = initialState, { type, ...payload }) => {
@@ -140,6 +144,28 @@ const budgets = (state = initialState, { type, ...payload }) => {
         message: null,
       };
     case DELETE_BUDGET_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        success: false,
+        message: payload.message,
+      };
+    case SWITCH_BUDGET_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+        success: false,
+        message: null,
+      };
+    case SWITCH_BUDGET_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        success: true,
+        message: null,
+        defaultBudgetId: payload.defaultBudgetId,
+      };
+    case SWITCH_BUDGET_FAILURE:
       return {
         ...state,
         isFetching: false,

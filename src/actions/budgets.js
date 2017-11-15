@@ -107,8 +107,9 @@ export const switchBudgetRequest = (id, resolve, reject) => ({
   reject,
 });
 
-export const switchBudgetSuccess = () => ({
+export const switchBudgetSuccess = defaultBudgetId => ({
   type: SWITCH_BUDGET_SUCCESS,
+  defaultBudgetId,
 });
 
 export const switchBudgetFailure = error => ({

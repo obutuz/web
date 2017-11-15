@@ -145,7 +145,13 @@ export function* switchBudget() {
 
     if (response && !error) {
       resolve();
-      yield put(switchBudgetSuccess());
+      let normalizedBudgets = [];
+      if (Object.keys(response.body).length > 0) {
+        normalizedBudgets = normalizeBudgets(response.body.budget);
+      }
+      const defaultBudgetId = normalizedBudgets[0].id;
+      localStorage.setItem('defaultBudgetId', defaultBudgetId);
+      yield put(switchBudgetSuccess(defaultBudgetId));
       yield put(fetchBudgetsRequest(resolve, reject));
     } else {
       reject();
