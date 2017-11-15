@@ -14,6 +14,7 @@ export const List = ({ budgets }) => (
           <Table.HeaderCell>ID</Table.HeaderCell>
           <Table.HeaderCell>Name</Table.HeaderCell>
           <Table.HeaderCell>Description</Table.HeaderCell>
+          <Table.HeaderCell>Actions</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -23,6 +24,9 @@ export const List = ({ budgets }) => (
               <Table.Cell><Link to={`/budgets/${budget.id}`}>{budget.id}</Link></Table.Cell>
               <Table.Cell><Link to={`/budgets/${budget.id}`}>{budget.name}</Link></Table.Cell>
               <Table.Cell>{budget.description}</Table.Cell>
+              <Table.Cell>
+                <Button as={Link} to={`/budgets/${budget.id}/edit`}>Edit</Button>
+              </Table.Cell>
             </Table.Row>
           );
         })}
