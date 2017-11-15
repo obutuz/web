@@ -11,6 +11,7 @@ import { signInUser, signOutUser, signUpUser, requireAuthentication } from './au
 import {
   fetchBudgets,
   fetchBudget,
+  createBudget,
 } from './budgets';
 
 export default function* rootSaga() {
@@ -21,6 +22,7 @@ export default function* rootSaga() {
   yield fork(deleteAccount);
   yield fork(fetchBudgets);
   yield fork(fetchBudget);
+  yield fork(createBudget);
   yield fork(signInUser);
   yield fork(signOutUser);
   yield fork(signUpUser);
