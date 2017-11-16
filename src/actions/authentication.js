@@ -52,9 +52,9 @@ export const signUpRequest = (values, resolve, reject) => ({
   reject,
 });
 
-export const signUpSuccess = data => ({
+export const signUpSuccess = authToken => ({
   type: SIGN_UP_SUCCESS,
-  authToken: data.access_token,
+  authToken,
 });
 
 export const signUpFailure = error => ({

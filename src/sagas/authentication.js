@@ -59,7 +59,7 @@ export function* signUpUser() {
       resolve();
       const authorizationHeader = response.headers.get('Authorization');
       localStorage.setItem('authToken', authorizationHeader);
-      yield put(signUpSuccess(response));
+      yield put(signUpSuccess(authorizationHeader));
       yield put(push('/'));
     } else {
       reject();
