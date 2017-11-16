@@ -42,7 +42,11 @@ export const List = ({
                     'Set as Default'
                   }
                 </Button>
-                <Button onClick={() => onBudgetDeleteClick(budget.id)} color="red">
+                <Button
+                  onClick={() => onBudgetDeleteClick(budget.id)}
+                  color="red"
+                  disabled={budget.id === defaultBudgetId}
+                >
                   Delete
                 </Button>
               </Table.Cell>
