@@ -59,8 +59,11 @@ export function* signUpUser() {
     if (response && !error) {
       resolve();
       const authorizationHeader = response.headers.get('Authorization');
+      const defaultBudgetId = Object.entries(response.body.budget)[0][1].id;
       localStorage.setItem('authToken', authorizationHeader);
+      localStorage.setItem('defaultBudgetId', defaultBudgetId);
       yield put(signUpSuccess(authorizationHeader));
+      yield put(switchBudgetSuccess(defaultBudgetId));
       yield put(push('/'));
     } else {
       reject();
