@@ -89,6 +89,7 @@ const authentication = (state = initialState, { type, ...payload }) => {
         isFetching: false,
         success: true,
         message: null,
+        authToken: payload.authToken,
       };
     case SIGN_UP_FAILURE:
       return {

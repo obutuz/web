@@ -17,6 +17,8 @@ import {
   userAuthenticationCheckFailure,
 } from '../actions/authentication';
 
+import { switchBudgetSuccess } from '../actions/budgets';
+
 export function* signInUser() {
   while (true) {
     const { values, resolve, reject } = yield take(SIGN_IN_REQUEST);
@@ -24,8 +26,11 @@ export function* signInUser() {
     if (response && !error) {
       resolve();
       const authorizationHeader = response.headers.get('Authorization');
+      const defaultBudgetId = Object.entries(response.body.budget)[0][1].id;
       localStorage.setItem('authToken', authorizationHeader);
+      localStorage.setItem('defaultBudgetId', defaultBudgetId);
       yield put(signInSuccess(authorizationHeader));
+      yield put(switchBudgetSuccess(defaultBudgetId));
       yield put(push('/'));
     } else {
       reject();
@@ -41,6 +46,7 @@ export function* signOutUser() {
 
     resolve();
     localStorage.removeItem('authToken');
+    localStorage.removeItem('defaultBudgetId');
     yield put(signOutSuccess());
     yield put(push('/'));
   }
@@ -53,8 +59,11 @@ export function* signUpUser() {
     if (response && !error) {
       resolve();
       const authorizationHeader = response.headers.get('Authorization');
+      const defaultBudgetId = Object.entries(response.body.budget)[0][1].id;
       localStorage.setItem('authToken', authorizationHeader);
-      yield put(signUpSuccess(response));
+      localStorage.setItem('defaultBudgetId', defaultBudgetId);
+      yield put(signUpSuccess(authorizationHeader));
+      yield put(switchBudgetSuccess(defaultBudgetId));
       yield put(push('/'));
     } else {
       reject();
