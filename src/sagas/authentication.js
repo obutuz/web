@@ -46,6 +46,7 @@ export function* signOutUser() {
 
     resolve();
     localStorage.removeItem('authToken');
+    localStorage.removeItem('defaultBudgetId');
     yield put(signOutSuccess());
     yield put(push('/'));
   }
