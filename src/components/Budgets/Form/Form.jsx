@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import TextField from '../../Form/TextField';
 import TextArea from '../../Form/TextArea';
+import { required } from '../../Form/Validation';
 
 export const BudgetForm = ({ handleSubmit, onSubmit }) => (
   <Container>
@@ -25,6 +26,7 @@ export const BudgetForm = ({ handleSubmit, onSubmit }) => (
           placeholder="Budget Name"
           type="text"
           component={TextField}
+          validate={required}
         />
       </Form.Field>
       <Form.Field>
