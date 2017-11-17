@@ -19,6 +19,7 @@ import './styles.css';
 import logo from '../App/logo.png';
 
 import TextField from '../Form/TextField';
+import { required, email } from '../Form/Validation';
 
 export const SignIn = ({ handleSubmit, onSubmit }) => (
   <div className="signin-form">
@@ -42,6 +43,7 @@ export const SignIn = ({ handleSubmit, onSubmit }) => (
               placeholder="Email address"
               type="email"
               component={TextField}
+              validate={[required, email]}
             />
             <Field
               icon="lock"
@@ -51,6 +53,7 @@ export const SignIn = ({ handleSubmit, onSubmit }) => (
               placeholder="Password"
               type="password"
               component={TextField}
+              validate={required}
             />
 
             <Button color="teal" fluid size="large">Login</Button>
