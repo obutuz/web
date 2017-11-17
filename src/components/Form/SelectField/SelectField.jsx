@@ -10,6 +10,7 @@ const SelectField = ({
   name,
   placeholder,
   options,
+  ...props
 }) => {
   return (
     <BaseFormField
@@ -19,6 +20,7 @@ const SelectField = ({
       options={options}
       input={input}
       as={Form.Select}
+      {...props}
     />
   );
 };

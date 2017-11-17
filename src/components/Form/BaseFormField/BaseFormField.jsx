@@ -8,6 +8,7 @@ const BaseFormField = ({
   label,
   placeholder,
   as: As = Input,
+  meta: { touched, error, warning },
   ...props
 }) => {
   function handleChange(e, { value }) {
@@ -25,6 +26,8 @@ const BaseFormField = ({
         placeholder={placeholder}
         onChange={handleChange}
       />
+      {touched && ((error && <span><i>{error}</i></span>) ||
+        (warning && <span><i>{warning}</i></span>))}
     </Form.Field>
   );
 };
@@ -35,6 +38,7 @@ BaseFormField.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
+  meta: PropTypes.object,
 };
 
 BaseFormField.defaultProps = {
@@ -42,6 +46,7 @@ BaseFormField.defaultProps = {
   type: null,
   label: null,
   placeholder: null,
+  meta: {},
 };
 
 export default BaseFormField;
