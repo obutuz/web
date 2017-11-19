@@ -9,6 +9,7 @@ describe('<Header />', () => {
     props = {
       isAuthenticated: false,
       onSignOutClick: jest.fn(),
+      onSidebarClick: jest.fn(),
     };
   });
 

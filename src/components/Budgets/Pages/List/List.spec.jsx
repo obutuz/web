@@ -8,6 +8,9 @@ describe('<List />', () => {
   beforeEach(() => {
     props = {
       budgets: [],
+      onBudgetDeleteClick: jest.fn(),
+      onBudgetSwitchClick: jest.fn(),
+      defaultBudgetId: '1',
     };
   });
 
