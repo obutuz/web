@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom';
 import { signUpRequest } from '../../actions/authentication';
 
 import TextField from '../Form/TextField';
+import { required, email } from '../Form/Validation';
 
 export const SignUp = ({ handleSubmit, onSubmit, isAuthenticated }) => {
   if (isAuthenticated) {
@@ -25,6 +26,7 @@ export const SignUp = ({ handleSubmit, onSubmit, isAuthenticated }) => {
           placeholder="Email Address"
           type="email"
           component={TextField}
+          validate={[required, email]}
         />
         <Field
           icon="lock"
@@ -34,6 +36,7 @@ export const SignUp = ({ handleSubmit, onSubmit, isAuthenticated }) => {
           placeholder="Password"
           type="password"
           component={TextField}
+          validate={required}
         />
         <Button type="submit" color="teal">Submit</Button>
       </Form>

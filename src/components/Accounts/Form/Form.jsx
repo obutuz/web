@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import TextField from '../../Form/TextField';
 import TextArea from '../../Form/TextArea';
 import SelectField from '../../Form/SelectField';
+import { required } from '../../Form/Validation';
 
 const accountTypes = [
   {
@@ -45,6 +46,7 @@ export const AccountForm = ({ handleSubmit, onSubmit }) => (
           placeholder="Account Name"
           type="text"
           component={TextField}
+          validate={required}
         />
       </Form.Field>
       <Form.Field>
@@ -64,6 +66,7 @@ export const AccountForm = ({ handleSubmit, onSubmit }) => (
           placeholder="Choose type of account"
           component={SelectField}
           options={accountTypes}
+          validate={required}
         />
       </Form.Field>
       <Button color="teal" type="submit">Submit</Button>

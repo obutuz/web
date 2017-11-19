@@ -11,6 +11,7 @@ const TextField = ({
   iconPosition,
   placeholder,
   type,
+  ...props
 }) => (
   <BaseFormField
     fluid
@@ -21,6 +22,7 @@ const TextField = ({
     placeholder={placeholder}
     type={type}
     input={input}
+    {...props}
   />
 );
 

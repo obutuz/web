@@ -9,6 +9,7 @@ const TextArea = ({
   id,
   name,
   placeholder,
+  ...props
 }) => (
   <BaseFormField
     id={id}
@@ -16,6 +17,7 @@ const TextArea = ({
     placeholder={placeholder}
     input={input}
     as={Form.TextArea}
+    {...props}
   />
 );
 

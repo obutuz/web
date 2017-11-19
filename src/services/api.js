@@ -49,7 +49,7 @@ function callApi(endpoint, method = 'get', headers = {}, body = {}) {
     })
     .then(
       response => ({ response }),
-      error => ({ error: error.message || 'Something bad happend' }),
+      error => ({ error: error.errors }),
     );
 }
 
