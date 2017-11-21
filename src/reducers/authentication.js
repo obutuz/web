@@ -81,6 +81,7 @@ const authentication = (state = initialState, { type, ...payload }) => {
         isFetching: true,
         success: false,
         message: null,
+        authToken: null,
       };
     case SIGN_UP_SUCCESS:
       return {
@@ -98,6 +99,7 @@ const authentication = (state = initialState, { type, ...payload }) => {
         isFetching: false,
         success: false,
         message: payload.message,
+        authToken: null,
       };
     case USER_AUTHENTICATION_CHECK_REQUEST:
       return {
@@ -117,7 +119,7 @@ const authentication = (state = initialState, { type, ...payload }) => {
       return {
         ...state,
         isFetching: false,
-        success: true,
+        success: false,
         message: null,
       };
     default:
