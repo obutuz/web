@@ -138,7 +138,7 @@ const budgets = (state = initialState, { type, ...payload }) => {
     case DELETE_BUDGET_SUCCESS:
       return {
         ...state,
-        activeAccount: null,
+        activeBudget: null,
         isFetching: false,
         success: true,
         message: null,

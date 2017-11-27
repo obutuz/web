@@ -8,6 +8,7 @@ describe('<List />', () => {
   beforeEach(() => {
     props = {
       accounts: [],
+      onAccountDeleteClick: jest.fn(),
     };
   });
 
