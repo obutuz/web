@@ -1,8 +1,6 @@
-# OpenBudget UI
+# Open Budget Web
 
-[![CircleCI](https://circleci.com/gh/obudget/ui.svg?style=svg)](https://circleci.com/gh/obudget/ui) [![codecov](https://codecov.io/gh/obudget/ui/branch/master/graph/badge.svg)](https://codecov.io/gh/obudget/ui) [![Greenkeeper badge](https://badges.greenkeeper.io/obudget/ui.svg)](https://greenkeeper.io/) [![Maintainability](https://api.codeclimate.com/v1/badges/33e91f231017c98b01f0/maintainability)](https://codeclimate.com/github/obudget/ui/maintainability) [![Gitter chat](https://badges.gitter.im/obudget.png)](https://gitter.im/obudget) [![Patreon donate button](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/terenceponce "Donate to this project using Patreon")
-
-[![Sponsor](https://app.codesponsor.io/embed/FtXSUnEDZhz4wUWaXdYz3wdD/obudget/ui.svg)](https://app.codesponsor.io/link/FtXSUnEDZhz4wUWaXdYz3wdD/obudget/ui)
+[![CircleCI](https://circleci.com/gh/obudget/web.svg?style=svg)](https://circleci.com/gh/obudget/web) [![codecov](https://codecov.io/gh/obudget/web/branch/master/graph/badge.svg)](https://codecov.io/gh/obudget/web) [![Greenkeeper badge](https://badges.greenkeeper.io/obudget/web.svg)](https://greenkeeper.io/) [![Maintainability](https://api.codeclimate.com/v1/badges/33e91f231017c98b01f0/maintainability)](https://codeclimate.com/github/obudget/web/maintainability) [![Gitter chat](https://badges.gitter.im/obudget.png)](https://gitter.im/obudget) [![Patreon donate button](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/terenceponce "Donate to this project using Patreon")
 
 ## Overview
 
@@ -23,8 +21,7 @@
 
 * View: [React](https://reactjs.org)
 * State: [Redux](https://redux.js.org)
-* UI: [Material UI](http://www.material-ui-next.com)
-* CSS: [JSS](http://cssinjs.org)
+* UI: [Semantic UI](https://react.semantic-ui.com/)
 
 ## Quick Start
 
