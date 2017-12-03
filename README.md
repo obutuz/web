@@ -26,7 +26,7 @@
 ## Quick Start
 
 ```
-git clone https://github.com/obudget/ui.git
+git clone https://github.com/obudget/web.git
 cd ui
 yarn install
 yarn start
